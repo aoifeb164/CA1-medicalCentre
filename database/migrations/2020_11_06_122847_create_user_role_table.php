@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:28:48+00:00
-# @Last modified time: 2020-11-06T12:33:16+00:00
+# @Last modified time: 2020-11-06T15:39:42+00:00
 
 
 
@@ -39,3 +39,5 @@ class CreateUserRoleTable extends Migration
         Schema::dropIfExists('user_role');
     }
 }
+
+//hello
