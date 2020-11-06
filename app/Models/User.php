@@ -1,4 +1,9 @@
 <?php
+# @Date:   2020-11-06T12:11:29+00:00
+# @Last modified time: 2020-11-06T12:38:38+00:00
+
+
+
 
 namespace App\Models;
 
@@ -40,4 +45,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles(){
+      return $this->belongsToMany('App\Models\Role');
+    }
+
+
 }
