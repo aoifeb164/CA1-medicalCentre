@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:25:44+00:00
-# @Last modified time: 2020-11-06T12:40:51+00:00
+# @Last modified time: 2020-11-06T17:18:29+00:00
 
 
 
@@ -15,6 +15,6 @@ class Role extends Model
     use HasFactory;
     public function users()
     {
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsToMany('App\Models\User', 'user_role');
     }
 }
