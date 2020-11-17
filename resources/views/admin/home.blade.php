@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.nav')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Welcome to AoifeMedicalCentre</div>
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,10 +14,7 @@
                         </div>
                     @endif
 
-                    This is the welcome page!
-                  </br>
-                </br>
-                  Read more <a href="{{ route('about') }}">about us</a>
+                    You are logged in as an admin
                 </div>
             </div>
         </div>

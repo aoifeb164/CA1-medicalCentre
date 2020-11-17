@@ -1,11 +1,11 @@
 <?php
 # @Date:   2020-11-06T17:41:34+00:00
-# @Last modified time: 2020-11-17T16:32:17+00:00
+# @Last modified time: 2020-11-17T16:39:31+00:00
 
 
 
 
-namespace App\Http\Controllers\Doctor;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:doctor');
+        $this->middleware('role:admin');
     }
 
     /**
@@ -34,6 +34,6 @@ class HomeController extends Controller
       // $user = Auth::user();
       //
       // $user->authorizeRoles('doctor');
-        return view('doctor.home');
+        return view('admin.home');
     }
 }
