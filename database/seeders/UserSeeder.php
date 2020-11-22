@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T16:58:54+00:00
-# @Last modified time: 2020-11-17T16:37:08+00:00
+# @Last modified time: 2020-11-22T20:19:05+00:00
 
 
 namespace Database\Seeders;
@@ -9,6 +9,9 @@ use Illuminate\Database\Seeder;
 use Hash;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Patient;
+use App\Models\Insurance_Company;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -42,11 +45,18 @@ class UserSeeder extends Seeder
 
         $patient = new User();
         $patient->name = 'Ronan Woods';
+        $patient->name = 'Ronan Woods';
         $patient->address = '154 street,Limerick';
         $patient->phone = '0852068976';
         $patient->email = 'ronan@email.com';
         $patient->password = Hash::make('secret');
         $patient->save();
         $patient->roles()->attach($role_patient);
+
+        $patient = new Patient();
+        $patient->insurance_company_id = $insurance_company = 3;
+        $patient->policy_no = '123456E';
+        $patient->user_id = $patient->id;
+        $patient->save();
     }
 }
