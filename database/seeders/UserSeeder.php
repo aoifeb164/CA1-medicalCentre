@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T16:58:54+00:00
-# @Last modified time: 2020-11-22T20:19:05+00:00
+# @Last modified time: 2020-11-24T09:56:53+00:00
 
 
 namespace Database\Seeders;
@@ -43,20 +43,19 @@ class UserSeeder extends Seeder
         $doctor->save();
         $doctor->roles()->attach($role_doctor);
 
-        $patient = new User();
-        $patient->name = 'Ronan Woods';
-        $patient->name = 'Ronan Woods';
-        $patient->address = '154 street,Limerick';
-        $patient->phone = '0852068976';
-        $patient->email = 'ronan@email.com';
-        $patient->password = Hash::make('secret');
-        $patient->save();
-        $patient->roles()->attach($role_patient);
+        $user = new User();
+        $user->name = 'Ronan Woods';
+        $user->address = '154 street,Limerick';
+        $user->phone = '0852068976';
+        $user->email = 'ronan@email.com';
+        $user->password = Hash::make('secret');
+        $user->save();
+        $user->roles()->attach($role_patient);
 
         $patient = new Patient();
-        $patient->insurance_company_id = $insurance_company = 3;
+        $patient->insurance_company_id = 3;
         $patient->policy_no = '123456E';
-        $patient->user_id = $patient->id;
+        $patient->user_id = $user->id;
         $patient->save();
     }
 }

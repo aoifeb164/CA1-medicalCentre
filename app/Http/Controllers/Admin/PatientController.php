@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2020-11-22T20:03:34+00:00
+# @Last modified time: 2020-11-24T09:21:40+00:00
 
 
 
@@ -60,8 +60,8 @@ class PatientController extends Controller
         'address' => 'required|max:191',
         'phone' => 'required|min:10',
         'email' => 'required|max:191',
-        'password' => 'required|max:191'
-        'insurance_company' => 'required|max:191'
+        'password' => 'required|max:191',
+        'insurance_company_id' => 'required',
         'policy_no' => 'required|max:191'
 
       ]);
@@ -71,7 +71,7 @@ class PatientController extends Controller
       $patient->phone = $request->input('phone');
       $patient->email = $request->input('email');
       $patient->password = $request->input('password');
-      $patient->insurance_company = $request->input('insurance_company');
+      $patient->insurance_company_id = $request->input('insurance_company_id');
       $patient->policy_no = $request->input('policy_no');
 
       $patient->save();
@@ -121,8 +121,8 @@ class PatientController extends Controller
           'address' => 'required|max:191',
           'phone' => 'required|min:10|unique:patients,phone,' . $patient->id,
           'email' => 'required|max:191',
-          'password' => 'required|max:191'
-          'insurance_company' => 'required|max:191'
+          'password' => 'required|max:191',
+          'insurance_company_id' => 'required',
           'policy_no' => 'required|max:191'
 
 
@@ -133,7 +133,7 @@ class PatientController extends Controller
         $patient->phone = $request->input('phone');
         $patient->email = $request->input('email');
         $patient->password = $request->input('password');
-        $patient->insurance_company = $request->input('insurance_company');
+        $patient->insurance_company_id = $request->input('insurance_company_id');
         $patient->policy_no = $request->input('policy_no');
 
         $patient->save();

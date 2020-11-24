@@ -28,6 +28,14 @@
                                 <td>Email</td>
                                 <td>{{ $patient->email }}</td>
                             </tr>
+                            <tr>
+                                <td>Insurance Company</td>
+                                <td>{{ $patient->insurance_company->name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Policy No.</td>
+                                <td>{{ $patient->policy_no }}</td>
+                            </tr>
                         </tbody>
                     </table>
 

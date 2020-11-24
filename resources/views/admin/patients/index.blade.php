@@ -23,6 +23,8 @@
                 <th>Address</th>
                 <th>Phone</th>
                 <th>Email</th>
+                <th>Insurance Company</th>
+                <th>Policy No.</th>
             </thead>
 
             <tbody>
@@ -32,6 +34,8 @@
               <td>{{ $patient->address }}</td>
               <td>{{ $patient->phone }}</td>
               <td>{{ $patient->email }}</td>
+              <td>{{ $patient->insurance_company->name}}</td>
+              <td>{{ $patient->policy_no }}</td>
               <td>
                 <a href="{{ route('admin.patients.show', $patient->id) }}" class="btn btn-primary">View</a>
                 <a href="{{ route('admin.patients.edit', $patient->id) }}" class="btn btn-warning">Edit</a>

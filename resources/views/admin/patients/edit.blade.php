@@ -45,6 +45,18 @@
                 <label for="password">Password</label>
                 <input type="text" class="form-control" id="password" name="password" value="{{ old('password', $patient->password) }}" />
               </div>
+              {{-- <div class="form_group">
+                <label for="insurance_company">Publisher</label>
+                <select name="insurance_company_id">
+                  @foreach ($insurance_companies as $insurance_company)
+                    <option value ="{{ $insurance_company->id }}" {{ (old('insurance_company_id', $book->insurance_company->id) == $insurance_company->id) ? "selected" : "" }} >{{ $insurance_company->name }}</option>
+                   @endforeach
+                  </select>
+              </div> --}}
+              <div class="form_group">
+                <label for="policy_no">Policy No.</label>
+                <input type="text" class="form-control" id="policy_no" name="policy_no" value="{{ old('policy_no', $patient->policy_no) }}" />
+              </div>
               <br>
               <div class="float-right">
                 <br>

@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-22T19:27:18+00:00
-# @Last modified time: 2020-11-22T20:12:45+00:00
+# @Last modified time: 2020-11-24T09:59:24+00:00
 
 
 
@@ -19,10 +19,6 @@ class PatientSeeder extends Seeder
      */
     public function run()
     {
-      $patient = new Patient();
-      $patient->insurance_company_id = $insurance_company = 3;
-      $patient->policy_no = '123456E';
-      $patient->user_id = $patient->id;
-      $patient->save();
+
     }
 }
