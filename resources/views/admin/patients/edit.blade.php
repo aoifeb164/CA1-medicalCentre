@@ -39,12 +39,13 @@
               <div class="form_group">
                 <label for="email">Email</label>
                 <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $patient->email) }}" />
-              </email
+              </email>
               <br>
               <div class="form_group">
                 <label for="password">Password</label>
                 <input type="text" class="form-control" id="password" name="password" value="{{ old('password', $patient->password) }}" />
               </div>
+              <br>
               {{-- <div class="form_group">
                 <label for="insurance_company">Publisher</label>
                 <select name="insurance_company_id">
