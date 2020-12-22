@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:11:30+00:00
-# @Last modified time: 2020-11-17T20:34:22+00:00
+# @Last modified time: 2020-12-22T17:20:01+00:00
 
 
 
@@ -8,8 +8,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
-use App\Http\Controllers\Admin\PatientController as AdminPatientController;
 use App\Http\Controllers\Admin\DoctorController as AdminDoctorController;
+use App\Http\Controllers\Admin\PatientController as AdminPatientController;
+use App\Http\Controllers\Admin\VisitController as AdminVisitController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,3 +53,11 @@ Route::post('/admin/patients/store', [AdminPatientController::class, 'store'])->
 Route::get('/admin/patients/{id}/edit', [AdminPatientController::class, 'edit'])->name('admin.patients.edit');
 Route::put('/admin/patients{id}', [AdminPatientController::class, 'update'])->name('admin.patients.update');
 Route::delete('/admin/patients/{id}', [AdminPatientController::class, 'destroy'])->name('admin.patients.destroy');
+
+Route::get('/admin/visits', [AdminVisitController::class, 'index'])->name('admin.visits.index');
+Route::get('/admin/visits/create', [AdminVisitController::class, 'create'])->name('admin.visits.create');
+Route::get('/admin/visits/{id}', [AdminVisitController::class, 'show'])->name('admin.visits.show');
+Route::post('/admin/visits/store', [AdminVisitController::class, 'store'])->name('admin.visits.store');
+Route::get('/admin/visits/{id}/edit', [AdminVisitController::class, 'edit'])->name('admin.visits.edit');
+Route::put('/admin/visits{id}', [AdminVisitController::class, 'update'])->name('admin.visits.update');
+Route::delete('/admin/visits/{id}', [AdminVisitController::class, 'destroy'])->name('admin.visits.destroy');

@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2020-11-24T09:21:40+00:00
+# @Last modified time: 2020-12-22T18:57:36+00:00
 
 
 
@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Patient;
+use App\Models\User;
 
 class PatientController extends Controller
 {
@@ -44,7 +45,12 @@ class PatientController extends Controller
      */
     public function create()
     {
-        return view('admin.patients.create');
+      $users = User::all();
+      $insurance_companies = InsuranceCompany::all();
+        return view('admin.patients.create', [
+          'users'=> $users,
+        'insurance_companies' => $insurance_companies
+      ]);
     }
 
     /**
@@ -60,20 +66,24 @@ class PatientController extends Controller
         'address' => 'required|max:191',
         'phone' => 'required|min:10',
         'email' => 'required|max:191',
-        'password' => 'required|max:191',
+
         'insurance_company_id' => 'required',
-        'policy_no' => 'required|max:191'
+        'policy_no' => 'required|max:191|unique:patients,policy_no'
 
       ]);
+
+      $user = new User();
+      $user->name = $request->input('name');
+      $user->address = $request->input('address');
+      $user->phone = $request->input('phone');
+      $user->email = $request->input('email');
+      $user->password = Hash::make('secret');
+      $user->save();
+
       $patient = new Patient();
-      $patient->name = $request->input('name');
-      $patient->address = $request->input('address');
-      $patient->phone = $request->input('phone');
-      $patient->email = $request->input('email');
-      $patient->password = $request->input('password');
       $patient->insurance_company_id = $request->input('insurance_company_id');
       $patient->policy_no = $request->input('policy_no');
-
+      $patient->user_id = $user->id;
       $patient->save();
 
       return redirect()->route('admin.patients.index');
@@ -122,20 +132,23 @@ class PatientController extends Controller
           'phone' => 'required|min:10|unique:patients,phone,' . $patient->id,
           'email' => 'required|max:191',
           'password' => 'required|max:191',
+
           'insurance_company_id' => 'required',
           'policy_no' => 'required|max:191'
 
 
         ]);
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->address = $request->input('address');
+        $user->phone = $request->input('phone');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->save();
+
         $patient = new Patient();
-        $patient->name = $request->input('name');
-        $patient->address = $request->input('address');
-        $patient->phone = $request->input('phone');
-        $patient->email = $request->input('email');
-        $patient->password = $request->input('password');
         $patient->insurance_company_id = $request->input('insurance_company_id');
         $patient->policy_no = $request->input('policy_no');
-
         $patient->save();
 
         return redirect()->route('admin.patients.index');

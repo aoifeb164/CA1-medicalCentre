@@ -35,6 +35,7 @@
                     <ul class="navbar-nav mr-auto">
                       <a class="nav-link" href="{{ route('admin.doctors.index') }}">{{ __('Doctors') }}</a>
                       <a class="nav-link" href="{{ route('admin.patients.index') }}">{{ __('Patients') }}</a>
+                      <a class="nav-link" href="{{ route('admin.visits.index') }}">{{ __('Visits') }}</a>
                       {{-- <a class="nav-link" href="{{ route('admin.visits.index') }}">{{ __('Visits') }}</a> --}}
 
                     </ul>

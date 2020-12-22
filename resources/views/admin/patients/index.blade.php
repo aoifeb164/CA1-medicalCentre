@@ -30,7 +30,7 @@
             <tbody>
           @foreach ($patients as $patient)
             <tr data-id="{{ $patient->id }}">
-              <td>{{ $patient->name }}</td>
+              <td>{{ $patient->user->name }}</td>
               <td>{{ $patient->address }}</td>
               <td>{{ $patient->phone }}</td>
               <td>{{ $patient->email }}</td>
