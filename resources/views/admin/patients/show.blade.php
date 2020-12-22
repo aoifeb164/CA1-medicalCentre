@@ -14,19 +14,19 @@
                         <tbody>
                             <tr>
                                 <td>Name</td>
-                                <td>{{ $patient->name }}</td>
+                                <td>{{ $patient->user->name }}</td>
                             </tr>
                             <tr>
                                 <td>Address</td>
-                                <td>{{ $patient->address }}</td>
+                                <td>{{ $patient->user->address }}</td>
                             </tr>
                             <tr>
                                 <td>Phone</td>
-                                <td>{{ $patient->phone }}</td>
+                                <td>{{ $patient->user->phone }}</td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>{{ $patient->email }}</td>
+                                <td>{{ $patient->user->email }}</td>
                             </tr>
                             <tr>
                                 <td>Insurance Company</td>

@@ -51,14 +51,14 @@
                                 <input type="text" class="form-control" id="policy_no" name="policy_no" value="{{ old('policy_no') }}" />
                             </div>
                             <br>
-                            {{-- <div class="form_group">
-                              <label for="insurance_company">Publisher</label>
+                             <div class="form_group">
+                              <label for="insurance_company">Insurance Company</label>
                           <select name="insurance_company_id">
                             @foreach ($insurance_companies as $insurance_company)
                               <option value ="{{ $insurance_company->id }}" {{ (old('insurance_company_id') == $insurance_company->id) ? "selected" : "" }} >{{ $insurance_company->name }}</option>
                              @endforeach
                             </select>
-                            </div> --}}
+                            </div>
                             <div class="float-right">
                                 <br>
                                 <a href="{{ route('admin.patients.index') }}" class="btn btn-default">Cancel</a>

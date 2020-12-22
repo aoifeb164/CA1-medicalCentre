@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2020-12-22T18:57:36+00:00
+# @Last modified time: 2020-12-22T20:42:05+00:00
 
 
 
@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Patient;
 use App\Models\User;
+use App\Models\InsuranceCompany;
 
 class PatientController extends Controller
 {
@@ -36,6 +37,7 @@ class PatientController extends Controller
   return view('admin.patients.index', [
     'patients' => $patients
   ]);
+
     }
 
     /**
@@ -126,30 +128,30 @@ class PatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-          'name' => 'required|max:191',
-          'address' => 'required|max:191',
-          'phone' => 'required|min:10|unique:patients,phone,' . $patient->id,
-          'email' => 'required|max:191',
-          'password' => 'required|max:191',
+      $request->validate([
+        'name' => 'required|max:191',
+        'address' => 'required|max:191',
+        'phone' => 'required|min:10',
+        'email' => 'required|max:191',
 
-          'insurance_company_id' => 'required',
-          'policy_no' => 'required|max:191'
+        'insurance_company_id' => 'required',
+        'policy_no' => 'required|max:191|unique:patients,policy_no'
 
+      ]);
 
-        ]);
-        $user = new User();
-        $user->name = $request->input('name');
-        $user->address = $request->input('address');
-        $user->phone = $request->input('phone');
-        $user->email = $request->input('email');
-        $user->password = $request->input('password');
-        $user->save();
+      $user = new User();
+      $user->name = $request->input('name');
+      $user->address = $request->input('address');
+      $user->phone = $request->input('phone');
+      $user->email = $request->input('email');
+      $user->password = Hash::make('secret');
+      $user->save();
 
-        $patient = new Patient();
-        $patient->insurance_company_id = $request->input('insurance_company_id');
-        $patient->policy_no = $request->input('policy_no');
-        $patient->save();
+      $patient = new Patient();
+      $patient->insurance_company_id = $request->input('insurance_company_id');
+      $patient->policy_no = $request->input('policy_no');
+      $patient->user_id = $user->id;
+      $patient->save();
 
         return redirect()->route('admin.patients.index');
     }

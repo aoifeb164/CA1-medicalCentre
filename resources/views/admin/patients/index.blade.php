@@ -31,9 +31,9 @@
           @foreach ($patients as $patient)
             <tr data-id="{{ $patient->id }}">
               <td>{{ $patient->user->name }}</td>
-              <td>{{ $patient->address }}</td>
-              <td>{{ $patient->phone }}</td>
-              <td>{{ $patient->email }}</td>
+              <td>{{ $patient->user->address }}</td>
+              <td>{{ $patient->user->phone }}</td>
+              <td>{{ $patient->user->email }}</td>
               <td>{{ $patient->insurance_company->name}}</td>
               <td>{{ $patient->policy_no }}</td>
               <td>

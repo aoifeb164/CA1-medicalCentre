@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-22T16:13:07+00:00
-# @Last modified time: 2020-12-22T16:43:52+00:00
+# @Last modified time: 2020-12-22T20:49:32+00:00
 
 
 
@@ -20,8 +20,8 @@ class CreateVisitsTable extends Migration
      {
          Schema::create('visits', function (Blueprint $table) {
            $table->id();
-           $table->string('date');
-           $table->string('time');
+           $table->date('date');
+           $table->time('time');
            $table->string('description');
            $table->unsignedBigInteger('patient_id');
            $table->unsignedBigInteger('doctor_id');

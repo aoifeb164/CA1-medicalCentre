@@ -33,12 +33,12 @@
               <br>
               <div class="form_group">
                 <label for="date">Date</label>
-                <input type="text" class="form-control" id="date" name="date" value="{{ old('date') }}" />
+                <input type="date" class="form-control" id="date" name="date" value="{{ old('date') }}" />
               </div>
               <br>
               <div class="form_group">
                 <label for="time">Time</label>
-                <input type="text" class="form-control" id="time" name="time" value="{{ old('time') }}" />
+                <input type="time" class="form-control" id="time" name="time" value="{{ old('time') }}" />
               </email>
               <br>
               <div class="form_group">
