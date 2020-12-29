@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2020-11-17T20:31:55+00:00
+# @Last modified time: 2020-12-29T13:07:33+00:00
 
 
 
@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
+use App\Models\User;
 
 class DoctorController extends Controller
 {
@@ -44,7 +45,10 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('admin.doctors.create');
+      $users = User::all();
+        return view('admin.doctors.create', [
+          'users'=> $users
+      ]);
     }
 
     /**
@@ -60,16 +64,21 @@ class DoctorController extends Controller
         'address' => 'required|max:191',
         'phone' => 'required|min:10',
         'email' => 'required|max:191',
-        'password' => 'required|max:191'
+
+        'registration_no'=> 'required|max:10|unique:doctors,registration_no'
 
       ]);
-      $doctor = new Doctor();
-      $doctor->name = $request->input('name');
-      $doctor->address = $request->input('address');
-      $doctor->phone = $request->input('phone');
-      $doctor->email = $request->input('email');
-      $doctor->password = $request->input('password');
+      $user = new User();
+      $user->name = $request->input('name');
+      $user->address = $request->input('address');
+      $user->phone = $request->input('phone');
+      $user->email = $request->input('email');
+      $user->password = $request->input('password');
+      $user->save();
 
+      $doctor = new Doctor();
+      $doctor->registration_no = $request->input('registration_no');
+      $doctor->user_id = $user->id;
       $doctor->save();
 
       return redirect()->route('admin.doctors.index');
@@ -117,16 +126,22 @@ class DoctorController extends Controller
           'address' => 'required|max:191',
           'phone' => 'required|min:10|unique:doctors,phone,' . $doctor->id,
           'email' => 'required|max:191',
-          'password' => 'required|max:191'
+
+          'registration_no'=> 'required|max:10|unique:doctors,registration_no'
 
         ]);
-        $doctor = new Doctor();
-        $doctor->name = $request->input('name');
-        $doctor->address = $request->input('address');
-        $doctor->phone = $request->input('phone');
-        $doctor->email = $request->input('email');
-        $doctor->password = $request->input('password');
 
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->address = $request->input('address');
+        $user->phone = $request->input('phone');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->save();
+
+        $doctor = new Doctor();
+        $doctor->registration_no = $request->input('registration_no');
+        $doctor->user_id = $user->id;
         $doctor->save();
 
         return redirect()->route('admin.doctors.index');

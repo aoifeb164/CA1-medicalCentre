@@ -39,13 +39,17 @@
               <div class="form_group">
                 <label for="email">Email</label>
                 <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" />
-              </email
+              </email>
               <br>
               <div class="form_group">
                 <label for="password">Password</label>
                 <input type="text" class="form-control" id="password" name="password" value="{{ old('password') }}" />
               </div>
               <br>
+              <div class="form_group">
+                <label for="registration_no">Registration number</label>
+                <input type="text" class="form-control" id="registration_no" name="registration_no" value="{{ old('registration_no') }}" />
+              </div>
               <div class="float-right">
                 <br>
                 <a href="{{ route('admin.doctors.index') }}" class="btn btn-default">Cancel</a>

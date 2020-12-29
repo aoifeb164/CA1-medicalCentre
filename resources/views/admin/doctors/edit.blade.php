@@ -23,29 +23,33 @@
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="form_group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $doctor->name) }}" />
+                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $doctor->user->name) }}" />
               </div>
               <br>
               <div class="form_group">
                 <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $doctor->address) }}" />
+                <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $doctor->user->address) }}" />
               </div>
               <br>
               <div class="form_group">
                 <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $doctor->phone) }}" />
+                <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $doctor->user->phone) }}" />
               </div>
               <br>
               <div class="form_group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $doctor->email) }}" />
-              </email
+                <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $doctor->user->email) }}" />
+              </email>
               <br>
               <div class="form_group">
                 <label for="password">Password</label>
-                <input type="text" class="form-control" id="password" name="password" value="{{ old('password', $doctor->password) }}" />
+                <input type="text" class="form-control" id="password" name="password" value="{{ old('password', $doctor->user->password) }}" />
               </div>
               <br>
+              <div class="form_group">
+                <label for="registration_no">Registration number</label>
+                <input type="text" class="form-control" id="registration_no" name="registration_no" value="{{ old('registration_no', $doctor->registration_no) }}" />
+              </div>
               <div class="float-right">
                 <br>
                 <a href="{{ route('admin.doctors.index') }}" class="btn btn-default">Cancel</a>

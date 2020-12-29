@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2020-12-22T20:42:05+00:00
+# @Last modified time: 2020-12-29T13:08:07+00:00
 
 
 
@@ -79,7 +79,7 @@ class PatientController extends Controller
       $user->address = $request->input('address');
       $user->phone = $request->input('phone');
       $user->email = $request->input('email');
-      $user->password = Hash::make('secret');
+      $user->password = $request->input('password');
       $user->save();
 
       $patient = new Patient();
@@ -144,7 +144,7 @@ class PatientController extends Controller
       $user->address = $request->input('address');
       $user->phone = $request->input('phone');
       $user->email = $request->input('email');
-      $user->password = Hash::make('secret');
+      $user->password = $request->input('password');
       $user->save();
 
       $patient = new Patient();

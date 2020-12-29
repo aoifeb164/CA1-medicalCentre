@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-17T19:52:49+00:00
-# @Last modified time: 2020-11-17T20:29:31+00:00
+# @Last modified time: 2020-12-29T13:12:00+00:00
 
 
 
@@ -25,6 +25,7 @@ class CreateDoctorsTable extends Migration
             $table->string('phone')->unique();
             $table->string('email');
             $table->string('password');
+            $table->string('registration_no');
             $table->timestamps();
         });
     }

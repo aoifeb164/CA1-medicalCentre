@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-22T16:59:52+00:00
-# @Last modified time: 2020-12-22T20:50:30+00:00
+# @Last modified time: 2020-12-29T13:37:21+00:00
 
 
 
@@ -52,7 +52,7 @@ class VisitController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'date' => 'required|date_format:d-m-Y',
+        'date' => 'required|date_format:Y-m-d',
         'time' => 'required|date_format:H:i',
         'description' => 'required',
         'patient_id' => 'required',
