@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-29T12:54:59+00:00
-# @Last modified time: 2020-12-29T12:55:54+00:00
+# @Last modified time: 2021-01-02T13:00:21+00:00
 
 
 
@@ -16,6 +16,9 @@ class AddUserIdToDoctorsTable extends Migration
      *
      * @return void
      */
+
+     //adding the user id to the doctors table
+     
     public function up()
     {
         Schema::table('doctors', function (Blueprint $table) {

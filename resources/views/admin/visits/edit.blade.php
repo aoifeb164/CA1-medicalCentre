@@ -19,6 +19,7 @@
                 </ul>
               </div>
             @endif
+            {{-- edit visit form --}}
             <form method="POST" action="{{ route('admin.visits.update', $visit->id) }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="form_group">
@@ -48,6 +49,7 @@
               <br>
               <div class="float-right">
                 <br>
+                {{-- creating cancel and submit button --}}
                 <a href="{{ route('admin.visits.index') }}" class="btn btn-default">Cancel</a>
                 <button type="submit" class="btn btn-primary pull-right">Submit</button>
               </div>

@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-29T14:24:19+00:00
-# @Last modified time: 2020-12-29T14:26:24+00:00
+# @Last modified time: 2021-01-02T15:19:43+00:00
 
 
 
@@ -26,6 +26,8 @@ class InsuranceCompanyFactory extends Factory
      */
     public function definition()
     {
+      //declaring what information we want to be put into the database
+      //insert a random company name and address in the insurance company table when the db is seeded
         return [
           'name' => $this->faker->company,
           'address' => $this->faker->address

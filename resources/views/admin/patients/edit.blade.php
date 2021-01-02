@@ -19,9 +19,11 @@
                 </ul>
               </div>
             @endif
+                {{-- edit patient form --}}
             <form method="POST" action="{{ route('admin.patients.update', $patient->id) }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="form_group">
+                
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $patient->user->name) }}" />
               </div>
@@ -61,6 +63,7 @@
               <br>
               <div class="float-right">
                 <br>
+                  {{-- creating cancel and submit button --}}
                 <a href="{{ route('admin.patients.index') }}" class="btn btn-default">Cancel</a>
                 <button type="submit" class="btn btn-primary pull-right">Submit</button>
               </div>

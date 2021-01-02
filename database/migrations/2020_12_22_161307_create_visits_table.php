@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-22T16:13:07+00:00
-# @Last modified time: 2020-12-22T20:49:32+00:00
+# @Last modified time: 2021-01-02T13:00:38+00:00
 
 
 
@@ -16,6 +16,9 @@ class CreateVisitsTable extends Migration
      *
      * @return void
      */
+
+     //creating the visits table in the Database
+     //declaring the information we want to be stored
      public function up()
      {
          Schema::create('visits', function (Blueprint $table) {

@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T16:59:09+00:00
-# @Last modified time: 2020-12-29T13:35:27+00:00
+# @Last modified time: 2021-01-02T15:27:56+00:00
 
 
 
@@ -16,6 +16,9 @@ class RoleSeeder extends Seeder
      *
      * @return void
      */
+
+     //filling the database with the necessary Roles
+     //adding 3 roles with a name and description and saving it in the roles table
     public function run()
     {
       $role_admin = new Role();

@@ -6,6 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="card">
                 <div class="card-header">
+                    {{-- getting visit time to be displayed --}}
                     {{$visit->time}} Visit
                 </div>
 
@@ -13,6 +14,7 @@
                     <table class="table table-hover">
                         <tbody>
                             <tr>
+                                {{-- getting information to be displayed from the visit table --}}
                                 <td>Patient</td>
                                 <td>{{ $visit->patient_id }}</td>
                             </tr>
@@ -35,6 +37,7 @@
                         </tbody>
                     </table>
 
+                      {{-- creating back, edit and delete button --}}
                     <a href="{{ route('admin.visits.index') }}" class="btn btn-default">Back</a>
                     <a href="{{ route('admin.visits.edit', $visit->id) }}" class="btn btn-warning">Edit</a>
                     <form style="display:inline-block" method="POST" action="{{ route('admin.visits.destroy', $visit->id ) }}">

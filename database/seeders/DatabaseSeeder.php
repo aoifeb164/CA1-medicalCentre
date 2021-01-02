@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:11:29+00:00
-# @Last modified time: 2020-12-22T16:53:09+00:00
+# @Last modified time: 2021-01-02T13:03:01+00:00
 
 
 
@@ -16,10 +16,12 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+     //declaring the seeders we want to run and in what order
+     //database seeders fill the database with information
      public function run()
      {
        $this->call(RoleSeeder::class);
-      $this->call(InsuranceCompanySeeder::class);
+       $this->call(InsuranceCompanySeeder::class);
        $this->call(UserSeeder::class);
        $this->call(PatientSeeder::class);
        $this->call(DoctorSeeder::class);

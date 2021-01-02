@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:11:29+00:00
-# @Last modified time: 2020-12-29T14:46:12+00:00
+# @Last modified time: 2021-01-02T15:20:27+00:00
 
 
 
@@ -27,6 +27,8 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+      //declaring what information we want to be put into the database
+      //insert the randomly generated information into the user table when the db is seeded
         return [
             'name' => $this->faker->name,
             'address' => $this->faker->address,

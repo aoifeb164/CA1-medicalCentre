@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-22T18:59:34+00:00
-# @Last modified time: 2020-11-22T19:00:15+00:00
+# @Last modified time: 2021-01-02T12:57:06+00:00
 
 
 
@@ -16,6 +16,9 @@ class CreateInsuranceCompaniesTable extends Migration
      *
      * @return void
      */
+
+     //creating the insurance_companies table in the Database
+     //declaring the information we want to be stored
     public function up()
     {
         Schema::create('insurance_companies', function (Blueprint $table) {

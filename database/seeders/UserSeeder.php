@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T16:58:54+00:00
-# @Last modified time: 2020-12-29T14:27:21+00:00
+# @Last modified time: 2021-01-02T15:33:40+00:00
 
 
 namespace Database\Seeders;
@@ -20,18 +20,23 @@ class UserSeeder extends Seeder
      *
      * @return void
      */
+
+     //filling the database with Users
     public function run()
     {
+      //declaring the roles to attach to the users
         $role_admin = Role::where('name','admin')->first();
         $role_doctor = Role::where('name','doctor')->first();
         $role_patient = Role::where('name','patient')->first();
 
+        //creating a user
         $admin = new User();
         $admin->name = 'Stephanie McDonnell';
         $admin->address = '198 street, Carlow';
         $admin->phone = '0987634567';
         $admin->email = 'stephanie@email.com';
         $admin->password = Hash::make('secret');
+        //save in user table and attaching admin role
         $admin->save();
         $admin->roles()->attach($role_admin);
         //
@@ -64,23 +69,34 @@ class UserSeeder extends Seeder
         // $patient->user_id = $user->id;
         // $patient->save();
 
-                for ($i = 1; $i <=3; $i++) {
-                  $user = User::factory()->create();
-                  $admin->roles()->attach($role_admin);
-                }
+
+            // filling the databse with x amount of doctors, patients and admins
+
+              for ($i = 1; $i <=3; $i++) {
+                //calling the factories where the information wanting to be filled is declared
+                $user = User::factory()->create();
+                //attaching roles to the Users
+                $admin->roles()->attach($role_admin);
+              }
 
 
-                 for ($i = 1; $i <=8; $i++) {
-                   $user = User::factory()->create();
-                   $user->roles()->attach($role_doctor);
-                   $doctor = Doctor::factory()->create([
-                   'user_id' => $user->id,
-                 ]);
-             }
+              for ($i = 1; $i <=8; $i++) {
+                //calling the factories where the information wanting to be filled is declared
+                $user = User::factory()->create();
+                //attaching roles to the Users
+                $user->roles()->attach($role_doctor);
+                //calling the factories where the information wanting to be filled is declared
+                $doctor = Doctor::factory()->create([
+                'user_id' => $user->id,
+              ]);
+          }
 
              for ($i = 1; $i <=20; $i++) {
+               //calling the factories where the information wanting to be filled is declared
                $user = User::factory()->create();
+               //attaching roles to the Users
                $user->roles()->attach($role_patient);
+               //calling the factories where the information wanting to be filled is declared
                $patient = Patient::factory()->create([
                'user_id' => $user->id,
              ]);

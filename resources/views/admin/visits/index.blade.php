@@ -9,16 +9,19 @@
 
       <div class="card">
         <div class="card-header">
+            {{-- visits index --}}
           Visits
           <a href="{{ route('admin.visits.create') }}" class="btn btn-primary float-right">Add</a>
         </div>
 
+          {{-- if there are no visits display the following message --}}
         <div class="card-body">
           @if (count($visits)=== 0)
             <p>There are no visits!</p>
           @else
             <table id ="table-visits" class="table table-hover">
               <thead>
+                {{-- table headings --}}
                 <th>Patient</th>
                 <th>Doctor</th>
                 <th>Date</th>
@@ -28,6 +31,7 @@
 
             <tbody>
           @foreach ($visits as $visit)
+            {{-- get visits by id and display the following information --}}
             <tr data-id="{{ $visit->id }}">
               <td>{{ $visit->patient_id }}</td>
               <td>{{ $visit->doctor_id }}</td>
@@ -35,6 +39,7 @@
               <td>{{ $visit->time }}</td>
               <td>{{ $visit->description }}</td>
               <td>
+                {{-- creating a view, edit and delete button --}}
                 <a href="{{ route('admin.visits.show', $visit->id) }}" class="btn btn-primary">View</a>
                 <a href="{{ route('admin.visits.edit', $visit->id) }}" class="btn btn-warning">Edit</a>
                 <form style="display:inline-block" method="POST" action="{{ route('admin.visits.destroy', $visit->id ) }}">

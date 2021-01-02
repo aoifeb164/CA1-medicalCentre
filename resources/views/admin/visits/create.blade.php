@@ -19,9 +19,11 @@
                 </ul>
               </div>
             @endif
+            {{-- create new visit form --}}
             <form method="POST" action="{{ route('admin.visits.store') }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="form_group">
+                  {{-- creating form fields to fill in the information to be added to the database --}}
                 <label for="patient_id">Patient Name</label>
                 <input type="text" class="form-control" id="patient_id" name="patient_id" value="{{ old('patient_id') }}" />
               </div>
@@ -48,6 +50,7 @@
               <br>
               <div class="float-right">
                 <br>
+                {{-- creating cancel and submit button --}}
                 <a href="{{ route('admin.visits.index') }}" class="btn btn-default">Cancel</a>
                 <button type="submit" class="btn btn-primary pull-right">Submit</button>
               </div>

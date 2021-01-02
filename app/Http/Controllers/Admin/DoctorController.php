@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2020-12-29T13:07:33+00:00
+# @Last modified time: 2021-01-02T15:04:28+00:00
 
 
 
@@ -9,6 +9,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+//calling the user and doctor model
 use App\Models\Doctor;
 use App\Models\User;
 
@@ -30,6 +31,8 @@ class DoctorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     //when on the index page display the doctors index
       public function index()
       {
   $doctors = Doctor::all();
@@ -43,6 +46,8 @@ class DoctorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     //when on the add doctor page display the doctors create form page
     public function create()
     {
       $users = User::all();
@@ -57,6 +62,8 @@ class DoctorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     //when storing a new doctor the fields are validated by making sure they have inputed using correct information format
     public function store(Request $request)
     {
       $request->validate([
@@ -67,6 +74,7 @@ class DoctorController extends Controller
 
         'registration_no'=> 'required|max:10|unique:doctors,registration_no'
 
+        //saves as a new user and stores the following information in the user table
       ]);
       $user = new User();
       $user->name = $request->input('name');
@@ -76,11 +84,13 @@ class DoctorController extends Controller
       $user->password = $request->input('password');
       $user->save();
 
+      //saves as a new doctor and stores the following in the doctors table
       $doctor = new Doctor();
       $doctor->registration_no = $request->input('registration_no');
       $doctor->user_id = $user->id;
       $doctor->save();
 
+      //when the doctor has been store redirect back to the index page
       return redirect()->route('admin.doctors.index');
     }
 
@@ -90,8 +100,11 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     //when on the show doctor page display the doctors show page
     public function show($id)
     {
+      //find the doctor by id
       $doctor = Doctor::findOrFail($id);
       return view('admin.doctors.show', [
         'doctor' => $doctor
@@ -104,8 +117,11 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     //when editing a doctor display the doctor edit page
     public function edit($id)
     {
+      //find the doctor by id
       $doctor = Doctor::findOrFail($id);
       return view('admin.doctors.edit', [
         'doctor' => $doctor
@@ -119,6 +135,8 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //when updating a new doctor the fields are validated by making sure they have inputed using correct information format
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -131,6 +149,7 @@ class DoctorController extends Controller
 
         ]);
 
+        //saves as a user and stores the following information in the user table
         $user = new User();
         $user->name = $request->input('name');
         $user->address = $request->input('address');
@@ -139,11 +158,13 @@ class DoctorController extends Controller
         $user->password = $request->input('password');
         $user->save();
 
+        //saves as a doctor and stores the following in the doctors table
         $doctor = new Doctor();
         $doctor->registration_no = $request->input('registration_no');
         $doctor->user_id = $user->id;
         $doctor->save();
 
+        //when the doctor has been stored redirect back to the index page
         return redirect()->route('admin.doctors.index');
     }
 
@@ -153,11 +174,12 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     //when deleting a doctor find by id and redirect back to doctor index page
     public function destroy($id)
     {
         $doctor = Doctor::findOrFail($id);
         $doctor->delete();
-
         return redirect()->route('admin.doctors.index');
     }
 }

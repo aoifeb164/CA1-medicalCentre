@@ -6,6 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="card">
                 <div class="card-header">
+                  {{-- getting doctor name to be displayed --}}
                     Doctor: {{$doctor->name}}
                 </div>
 
@@ -13,6 +14,7 @@
                     <table class="table table-hover">
                         <tbody>
                             <tr>
+                              {{-- getting information to be displayed from the user table --}}
                                 <td>Name</td>
                                 <td>{{ $doctor->user->name }}</td>
                             </tr>
@@ -29,12 +31,14 @@
                                 <td>{{ $doctor->user->email }}</td>
                             </tr>
                             <tr>
+                              {{-- getting information to be displayed from the doctor table --}}
                                 <td>Registration number</td>
                                 <td>{{ $doctor->registration_no}}</td>
                             </tr>
                         </tbody>
                     </table>
 
+                    {{-- creating back, edit and delete button --}}
                     <a href="{{ route('admin.doctors.index') }}" class="btn btn-default">Back</a>
                     <a href="{{ route('admin.doctors.edit', $doctor->id) }}" class="btn btn-warning">Edit</a>
                     <form style="display:inline-block" method="POST" action="{{ route('admin.doctors.destroy', $doctor->id ) }}">

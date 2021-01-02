@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-29T13:51:12+00:00
-# @Last modified time: 2020-12-29T14:30:21+00:00
+# @Last modified time: 2021-01-02T15:19:51+00:00
 
 
 
@@ -27,8 +27,11 @@ class PatientFactory extends Factory
      */
     public function definition()
     {
+      //declaring what information we want to be put into the database
+      //insert a random number for the policy number in the patients table when the db is seeded
         return [
             'policy_no' => $this->faker->unique()->randomNumber,
+            //calling the insranceCompany factory to display one of the created company ids in the patients table
             'insurance_company_id' => InsuranceCompany::factory()
         ];
     }

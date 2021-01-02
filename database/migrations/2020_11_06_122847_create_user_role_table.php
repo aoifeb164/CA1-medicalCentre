@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:28:48+00:00
-# @Last modified time: 2020-11-06T15:40:15+00:00
+# @Last modified time: 2021-01-02T13:00:25+00:00
 
 
 
@@ -16,6 +16,10 @@ class CreateUserRoleTable extends Migration
      *
      * @return void
      */
+
+     //creating the user_role table in the Database
+     //declaring the information we want to be stored
+     //this relates to the roles table and the users table
     public function up()
     {
         Schema::create('user_role', function (Blueprint $table) {

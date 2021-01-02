@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T17:33:41+00:00
-# @Last modified time: 2020-11-17T16:34:27+00:00
+# @Last modified time: 2021-01-02T15:12:18+00:00
 
 
 
@@ -31,16 +31,21 @@ class HomeController extends Controller
          $user = Auth::user();
          $home = 'home';
 
+        //if the user logs in with admin role diplay admin home page
          if($user->hasRole('admin')){
            $home = 'admin.home';
          }
 
+         //if user logs in with doctor role display doctor home page
          else if($user->hasRole('doctor')){
            $home = 'doctor.home';
          }
+
+         //if user logs in with patient role display patient home page
          else if ($user->hasRole('patient')){
            $home = 'patient.home';
          }
+         
            return redirect()->route($home);
        }
    }
