@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T17:41:34+00:00
-# @Last modified time: 2020-11-17T16:39:31+00:00
+# @Last modified time: 2021-01-03T17:23:12+00:00
 
 
 
@@ -29,11 +29,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+     //when a user logs in with an admin role bring them to the admin home page
     public function index()
     {
       // $user = Auth::user();
       //
-      // $user->authorizeRoles('doctor');
+      // $user->authorizeRoles('admin');
         return view('admin.home');
     }
 }

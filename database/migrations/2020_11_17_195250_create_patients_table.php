@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-17T19:52:49+00:00
-# @Last modified time: 2021-01-02T12:56:19+00:00
+# @Last modified time: 2021-01-03T18:58:34+00:00
 
 
 
@@ -17,7 +17,7 @@ class CreatePatientsTable extends Migration
      * @return void
      */
 
-     //creating the patients table in the Database
+     //creating the patients table in the Database using a migration
      //declaring the information we want to be stored
     public function up()
     {
@@ -39,6 +39,8 @@ class CreatePatientsTable extends Migration
      *
      * @return void
      */
+
+     //dropping teh table if the migration is rolled back 
     public function down()
     {
         Schema::dropIfExists('patients');

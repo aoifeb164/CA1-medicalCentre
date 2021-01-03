@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+
      //declaring the seeders we want to run and in what order
      //database seeders fill the database with information
      public function run()

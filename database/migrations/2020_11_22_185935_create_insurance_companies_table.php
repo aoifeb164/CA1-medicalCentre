@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-22T18:59:34+00:00
-# @Last modified time: 2021-01-02T12:57:06+00:00
+# @Last modified time: 2021-01-03T18:59:25+00:00
 
 
 
@@ -17,7 +17,7 @@ class CreateInsuranceCompaniesTable extends Migration
      * @return void
      */
 
-     //creating the insurance_companies table in the Database
+     //creating the insurance_companies table in the Database using a migration
      //declaring the information we want to be stored
     public function up()
     {
@@ -34,6 +34,8 @@ class CreateInsuranceCompaniesTable extends Migration
      *
      * @return void
      */
+
+     //dropping the table if the migration is rolled back
     public function down()
     {
         Schema::dropIfExists('insurance_companies');

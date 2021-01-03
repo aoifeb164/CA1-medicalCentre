@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:28:48+00:00
-# @Last modified time: 2021-01-02T13:00:25+00:00
+# @Last modified time: 2021-01-03T18:57:44+00:00
 
 
 
@@ -17,9 +17,10 @@ class CreateUserRoleTable extends Migration
      * @return void
      */
 
-     //creating the user_role table in the Database
+     //creating the user_role table in the Database using a migration
      //declaring the information we want to be stored
      //this relates to the roles table and the users table
+
     public function up()
     {
         Schema::create('user_role', function (Blueprint $table) {
@@ -28,6 +29,8 @@ class CreateUserRoleTable extends Migration
             $table->bigInteger('role_id')->unsigned();
             $table->timestamps();
 
+            //creating a foreign key in the user_role table
+            //calls the users table and role table and the ids
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('restrict');
         });
@@ -38,6 +41,8 @@ class CreateUserRoleTable extends Migration
      *
      * @return void
      */
+
+     //dropping the table if the migration is rolled back
     public function down()
     {
         Schema::dropIfExists('user_role');

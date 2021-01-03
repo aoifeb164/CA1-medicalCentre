@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T17:41:34+00:00
-# @Last modified time: 2020-11-17T16:32:17+00:00
+# @Last modified time: 2021-01-03T17:23:13+00:00
 
 
 
@@ -29,6 +29,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+     //when a user with the doctor role logs in bring them to the doctor home page
     public function index()
     {
       // $user = Auth::user();

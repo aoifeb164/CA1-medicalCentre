@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-22T16:13:07+00:00
-# @Last modified time: 2021-01-02T13:00:38+00:00
+# @Last modified time: 2021-01-03T19:05:19+00:00
 
 
 
@@ -17,7 +17,7 @@ class CreateVisitsTable extends Migration
      * @return void
      */
 
-     //creating the visits table in the Database
+     //creating the visits table in the Database with a migration
      //declaring the information we want to be stored
      public function up()
      {
@@ -40,6 +40,8 @@ class CreateVisitsTable extends Migration
      *
      * @return void
      */
+
+     //dropping the table if the migration is rolled back 
     public function down()
     {
         Schema::dropIfExists('visits');

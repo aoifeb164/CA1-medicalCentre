@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:25:44+00:00
-# @Last modified time: 2021-01-02T12:56:11+00:00
+# @Last modified time: 2021-01-03T18:55:53+00:00
 
 
 
@@ -16,8 +16,8 @@ class CreateRolesTable extends Migration
      *
      * @return void
      */
-     
-     //creating the roles table in the Database
+
+     //creating the roles table in the Database using a migration
      //declaring the information we want to be stored
     public function up()
     {
@@ -34,6 +34,8 @@ class CreateRolesTable extends Migration
      *
      * @return void
      */
+
+     //dropping the table if the migration is rolled back
     public function down()
     {
         Schema::dropIfExists('roles');

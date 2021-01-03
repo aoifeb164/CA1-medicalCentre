@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:11:29+00:00
-# @Last modified time: 2021-01-02T12:55:55+00:00
+# @Last modified time: 2021-01-03T18:54:51+00:00
 
 
 
@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
      * @return void
      */
 
-     //creating the users table in the Database
+     //creating the users table in the database using a migration
      //declaring the information we want to be stored
     public function up()
     {
@@ -39,6 +39,8 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
+
+     //dropping the table if the migration is rolled back
     public function down()
     {
         Schema::dropIfExists('users');
