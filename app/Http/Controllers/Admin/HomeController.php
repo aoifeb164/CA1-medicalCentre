@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T17:41:34+00:00
-# @Last modified time: 2021-01-03T17:23:12+00:00
+# @Last modified time: 2021-01-06T11:48:36+00:00
 
 
 
@@ -33,9 +33,7 @@ class HomeController extends Controller
      //when a user logs in with an admin role bring them to the admin home page
     public function index()
     {
-      // $user = Auth::user();
-      //
-      // $user->authorizeRoles('admin');
+
         return view('admin.home');
     }
 }
