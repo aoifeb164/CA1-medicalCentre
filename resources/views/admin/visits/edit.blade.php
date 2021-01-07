@@ -23,14 +23,24 @@
             <form method="POST" action="{{ route('admin.visits.update', $visit->id) }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="form_group">
-                <label for="patient_id">Patient</label>
-                <input type="text" class="form-control" id="patient_id" name="patient_id" value="{{ old('patient_id', $visit->patient_id) }}" />
-              </div>
+               <label for="patient">Patient</label>
+               <br>
+           <select name="patient_id">
+             @foreach ($patients as $patient)
+               <option value ="{{ $patient->id }}" {{ (old('patient_id', $patient->user->name) == $patient->user->name) ? "selected" : "" }} >{{ $patient->user->name }}</option>
+              @endforeach
+             </select>
+             </div>
               <br>
               <div class="form_group">
-                <label for="doctor_id">Doctor</label>
-                <input type="text" class="form-control" id="doctor_id" name="doctor_id" value="{{ old('doctor_id', $visit->doctor_id) }}" />
-              </div>
+               <label for="doctor">Doctor</label>
+               <br>
+           <select name="doctor_id">
+             @foreach ($doctors as $doctor)
+               <option value ="{{ $doctor->id }}" {{ (old('doctor_id', $doctor->user->name) == $doctor->user->name) ? "selected" : "" }} >{{ $doctor->user->name }}</option>
+              @endforeach
+             </select>
+             </div>
               <br>
               <div class="form_group">
                 <label for="date">Date</label>
@@ -40,7 +50,7 @@
               <div class="form_group">
                 <label for="time">Time</label>
                 <input type="text" class="form-control" id="time" name="time" value="{{ old('time', $visit->time) }}" />
-              </email
+              </email>
               <br>
               <div class="form_group">
                 <label for="description">Description</label>

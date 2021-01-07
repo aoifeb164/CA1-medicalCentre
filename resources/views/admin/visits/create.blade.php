@@ -24,6 +24,7 @@
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="form_group">
                <label for="patient">Patient</label>
+               <br>
            <select name="patient_id">
              @foreach ($patients as $patient)
                <option value ="{{ $patient->id }}" {{ (old('patient_id') == $patient->id) ? "selected" : "" }} >{{ $patient->user->name }}</option>
@@ -33,6 +34,7 @@
               <br>
               <div class="form_group">
                <label for="doctor">Doctor</label>
+               <br>
            <select name="doctor_id">
              @foreach ($doctors as $doctor)
                <option value ="{{ $doctor->id }}" {{ (old('doctor_id') == $doctor->id) ? "selected" : "" }} >{{ $doctor->user->name }}</option>
