@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T16:58:54+00:00
-# @Last modified time: 2021-01-02T15:33:40+00:00
+# @Last modified time: 2021-01-07T17:27:19+00:00
 
 
 namespace Database\Seeders;
@@ -39,29 +39,28 @@ class UserSeeder extends Seeder
         //save in user table and attaching admin role
         $admin->save();
         $admin->roles()->attach($role_admin);
-        //
-        // $user = new User();
-        // $user->name = 'Aoife Brennan';
-        // $user->address = '123 street, Louth';
-        // $user->phone = '0860024694';
-        // $user->email = 'aoife@email.com';
-        // $user->password = Hash::make('secret');
-        // $user->save();
-        // $user->roles()->attach($role_doctor);
-        //
-        // $doctor = new Doctor();
-        // $doctor ->registration_no = '1234fgh8';
-        // $doctor->user_id = $user->id;
-        // $doctor->save();
-        //
-        // $user = new User();
-        // $user->name = 'Ronan Woods';
-        // $user->address = '154 street,Limerick';
-        // $user->phone = '0852068976';
-        // $user->email = 'ronan@email.com';
-        // $user->password = Hash::make('secret');
-        // $user->save();
-        // $user->roles()->attach($role_patient);
+        $user = new User();
+        $user->name = 'Aoife Brennan';
+        $user->address = '123 street, Louth';
+        $user->phone = '0860024694';
+        $user->email = 'aoife@email.com';
+        $user->password = Hash::make('secret');
+        $user->save();
+        $user->roles()->attach($role_doctor);
+
+        $doctor = new Doctor();
+        $doctor ->registration_no = '1234fgh8';
+        $doctor->user_id = $user->id;
+        $doctor->save();
+
+        $user = new User();
+        $user->name = 'Ronan Woods';
+        $user->address = '154 street,Limerick';
+        $user->phone = '0852068976';
+        $user->email = 'ronan@email.com';
+        $user->password = Hash::make('secret');
+        $user->save();
+        $user->roles()->attach($role_patient);
         //
         // $patient = new Patient();
         // $patient->insurance_company_id = 3;

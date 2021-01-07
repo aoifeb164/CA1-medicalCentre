@@ -1,4 +1,4 @@
-@extends('layouts.admin.nav')
+@extends('layouts.doctor.nav')
 
 @section('content')
 <div class="container">
@@ -11,7 +11,7 @@
         <div class="card-header">
             {{-- visits index --}}
           Visits
-          <a href="{{ route('admin.visits.create') }}" class="btn btn-primary float-right">Add</a>
+          <a href="{{ route('doctor.visits.create') }}" class="btn btn-primary float-right">Add</a>
         </div>
 
           {{-- if there are no visits display the following message --}}
@@ -40,9 +40,9 @@
               <td>{{ $visit->description }}</td>
               <td>
                 {{-- creating a view, edit and delete button --}}
-                <a href="{{ route('admin.visits.show', $visit->id) }}" class="btn btn-primary">View</a>
-                <a href="{{ route('admin.visits.edit', $visit->id) }}" class="btn btn-warning">Edit</a>
-                <form style="display:inline-block" method="POST" action="{{ route('admin.visits.destroy', $visit->id ) }}">
+                <a href="{{ route('doctor.visits.show', $visit->id) }}" class="btn btn-primary">View</a>
+                <a href="{{ route('doctor.visits.edit', $visit->id) }}" class="btn btn-warning">Edit</a>
+                <form style="display:inline-block" method="POST" action="{{ route('doctor.visits.destroy', $visit->id ) }}">
                   <input type="hidden" name="_method" value="DELETE">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   <button type="submit" class="form-control btn btn-danger">Delete</a>

@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-01-02T15:04:57+00:00
+# @Last modified time: 2021-01-07T16:58:15+00:00
 
 
 
@@ -132,8 +132,10 @@ class PatientController extends Controller
     {
       //find the patient by id
       $patient = Patient::findOrFail($id);
+      $insurance_companies = InsuranceCompany::all();
       return view('admin.patients.edit', [
-        'patient' => $patient
+        'patient' => $patient,
+        'insurance_companies' => $insurance_companies
       ]);
     }
 

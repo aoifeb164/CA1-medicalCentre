@@ -1,4 +1,4 @@
-@extends('layouts.nav')
+@extends('layouts.admin.nav')
 
 @section('content')
 <div class="container">

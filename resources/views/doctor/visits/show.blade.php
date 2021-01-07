@@ -1,4 +1,4 @@
-@extends('layouts.admin.nav')
+@extends('layouts.doctor.nav')
 
 @section('content')
 <div class="container">
@@ -38,9 +38,9 @@
                     </table>
 
                       {{-- creating back, edit and delete button --}}
-                    <a href="{{ route('admin.visits.index') }}" class="btn btn-default">Back</a>
-                    <a href="{{ route('admin.visits.edit', $visit->id) }}" class="btn btn-warning">Edit</a>
-                    <form style="display:inline-block" method="POST" action="{{ route('admin.visits.destroy', $visit->id ) }}">
+                    <a href="{{ route('doctor.visits.index') }}" class="btn btn-default">Back</a>
+                    <a href="{{ route('doctor.visits.edit', $visit->id) }}" class="btn btn-warning">Edit</a>
+                    <form style="display:inline-block" method="POST" action="{{ route('doctor.visits.destroy', $visit->id ) }}">
                       <input type="hidden" name="_method" value="DELETE">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <button type="submit" class="form-control btn btn-danger">Delete</a>

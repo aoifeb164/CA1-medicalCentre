@@ -1,4 +1,4 @@
-@extends('layouts.nav')
+@extends('layouts.admin.nav')
 
 @section('content')
   <div class="container">
@@ -23,7 +23,7 @@
             <form method="POST" action="{{ route('admin.patients.update', $patient->id) }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="form_group">
-                
+
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $patient->user->name) }}" />
               </div>
@@ -44,18 +44,14 @@
               </email>
               <br>
               <div class="form_group">
-                <label for="password">Password</label>
-                <input type="text" class="form-control" id="password" name="password" value="{{ old('password', $patient->user->password) }}" />
-              </div>
-              <br>
-              {{-- <div class="form_group">
                <label for="insurance_company">Insurance Company</label>
            <select name="insurance_company_id">
              @foreach ($insurance_companies as $insurance_company)
-               <option value ="{{ $insurance_company->id }}" {{ (old('insurance_company_id') == $insurance_company->id) ? "selected" : "" }} >{{ $insurance_company->name }}</option>
+               <option value ="{{ $insurance_company->id }}" {{ (old('insurance_company_id', $insurance_company->name) == $patient->insurance_company->name) ? "selected" : "" }} >{{ $insurance_company->name }}</option>
               @endforeach
              </select>
-             </div> --}}
+             </div>
+             <br>
               <div class="form_group">
                 <label for="policy_no">Policy No.</label>
                 <input type="text" class="form-control" id="policy_no" name="policy_no" value="{{ old('policy_no', $patient->policy_no) }}" />

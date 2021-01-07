@@ -1,4 +1,4 @@
-@extends('layouts.admin.nav')
+@extends('layouts.doctor.nav')
 
 @section('content')
   <div class="container">
@@ -20,15 +20,15 @@
               </div>
             @endif
             {{-- edit visit form --}}
-            <form method="POST" action="{{ route('admin.visits.update', $visit->id) }}">
+            <form method="POST" action="{{ route('doctor.visits.update', $visit->id) }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="form_group">
-                <label for="patient_id">Patient</label>
+                <label for="patient_id">Patient ID</label>
                 <input type="text" class="form-control" id="patient_id" name="patient_id" value="{{ old('patient_id', $visit->patient_id) }}" />
               </div>
               <br>
               <div class="form_group">
-                <label for="doctor_id">Doctor</label>
+                <label for="doctor_id">Doctor ID</label>
                 <input type="text" class="form-control" id="doctor_id" name="doctor_id" value="{{ old('doctor_id', $visit->doctor_id) }}" />
               </div>
               <br>
@@ -50,7 +50,7 @@
               <div class="float-right">
                 <br>
                 {{-- creating cancel and submit button --}}
-                <a href="{{ route('admin.visits.index') }}" class="btn btn-default">Cancel</a>
+                <a href="{{ route('doctor.visits.index') }}" class="btn btn-default">Cancel</a>
                 <button type="submit" class="btn btn-primary pull-right">Submit</button>
               </div>
             </form>

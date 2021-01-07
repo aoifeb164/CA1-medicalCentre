@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-22T16:13:07+00:00
-# @Last modified time: 2021-01-03T19:05:19+00:00
+# @Last modified time: 2021-01-07T14:42:33+00:00
 
 
 
@@ -26,12 +26,10 @@ class CreateVisitsTable extends Migration
            $table->date('date');
            $table->time('time');
            $table->string('description');
-           $table->unsignedBigInteger('patient_id');
-           $table->unsignedBigInteger('doctor_id');
+           $table->unsignedBigInteger('patient');
+           $table->unsignedBigInteger('doctor');
            $table->timestamps();
 
-           $table->foreign('patient_id')->references('id')->on('patients');
-           $table->foreign('doctor_id')->references('id')->on('doctors');
          });
      }
 
@@ -41,7 +39,7 @@ class CreateVisitsTable extends Migration
      * @return void
      */
 
-     //dropping the table if the migration is rolled back 
+     //dropping the table if the migration is rolled back
     public function down()
     {
         Schema::dropIfExists('visits');

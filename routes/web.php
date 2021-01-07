@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:11:30+00:00
-# @Last modified time: 2021-01-03T18:08:07+00:00
+# @Last modified time: 2021-01-07T18:03:12+00:00
 
 
 
@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\DoctorController as AdminDoctorController;
 use App\Http\Controllers\Admin\PatientController as AdminPatientController;
 use App\Http\Controllers\Admin\VisitController as AdminVisitController;
+
+use App\Http\Controllers\Doctor\VisitController as DoctorVisitController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -88,3 +90,18 @@ Route::get('/admin/visits/{id}/edit', [AdminVisitController::class, 'edit'])->na
 Route::put('/admin/visits{id}', [AdminVisitController::class, 'update'])->name('admin.visits.update');
 //deleting a visit from the table and getting them by id
 Route::delete('/admin/visits/{id}', [AdminVisitController::class, 'destroy'])->name('admin.visits.destroy');
+
+//display the admin visit index when logged in as an admin and viewing list of visits
+Route::get('/doctor/visits', [DoctorVisitController::class, 'index'])->name('doctor.visits.index');
+//display the admin create visit form when logged in as admin and wanting to create new visit
+Route::get('/doctor/visits/create', [DoctorVisitController::class, 'create'])->name('doctor.visits.create');
+//display the admin show visit page when logged in as admin and viewing one visit and getting them from the db by id
+Route::get('/doctor/visits/{id}', [DoctorVisitController::class, 'show'])->name('doctor.visits.show');
+//storing visitt in the db in the visit table
+Route::post('/doctor/visits/store', [DoctorVisitController::class, 'store'])->name('doctor.visits.store');
+//displaying the admin edit visit form when logged in as an admin and wanting to change visit details and getting them from the db by id
+Route::get('/doctor/visits/{id}/edit', [DoctorVisitController::class, 'edit'])->name('doctor.visits.edit');
+//updating the visit table in the db
+Route::put('/doctor/visits{id}', [DoctorVisitController::class, 'update'])->name('doctor.visits.update');
+//deleting a visit from the table and getting them by id
+Route::delete('/doctor/visits/{id}', [DoctorVisitController::class, 'destroy'])->name('doctor.visits.destroy');

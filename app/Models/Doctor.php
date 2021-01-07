@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-17T20:27:17+00:00
-# @Last modified time: 2021-01-02T13:43:58+00:00
+# @Last modified time: 2021-01-07T16:41:59+00:00
 
 
 
@@ -18,5 +18,9 @@ class Doctor extends Model
   public function user()
   {
   return $this->belongsTo('App\Models\User');
+}
+public function visits()
+{
+return $this->hasMany('App\Models\Visit', 'doctor_id');
 }
 }

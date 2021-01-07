@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-22T16:38:35+00:00
-# @Last modified time: 2021-01-03T17:47:08+00:00
+# @Last modified time: 2021-01-07T16:47:14+00:00
 
 
 
@@ -16,12 +16,12 @@ class Visit extends Model
 //delcaring the relationship between patients/doctors table and the visits tables
 //visits have many doctors and patients
 
-//     public function patients()
-//     {
-//     return $this->hasMany('App\Models\Patient');
-//   }
-//   public function doctors()
-//   {
-//   return $this->hasMany('App\Models\Doctor');
-// }
+    public function patient()
+    {
+    return $this->belongsTo('App\Models\Patient', 'patient_id');
+  }
+  public function doctor()
+  {
+  return $this->belongsTo('App\Models\Doctor', 'doctor_id');
+}
 }

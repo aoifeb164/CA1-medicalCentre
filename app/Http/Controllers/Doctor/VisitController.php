@@ -1,41 +1,41 @@
 <?php
-# @Date:   2020-12-22T16:59:52+00:00
-# @Last modified time: 2021-01-07T16:46:13+00:00
+# @Date:   2021-01-07T17:11:12+00:00
+# @Last modified time: 2021-01-07T18:36:53+00:00
 
 
 
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Doctor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
 use App\Models\Visit;
 use App\Models\Patient;
 use App\Models\Doctor;
-use App\Models\User;
 
 class VisitController extends Controller
 {
 
-  public function __construct()
-  {
-      $this->middleware('auth');
-      $this->middleware('role:admin');
-  }
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:admin,doctor');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    //when on the index page display the visits index
     public function index()
     {
-      $visits = Visit::all()->sortBy('date');
-      return view('admin.visits.index', [
-        'visits' => $visits
-      ]);
+        $user = Auth::user();
+        $visits = $user->doctor->visits()->orderBy('date', 'asc')->paginate(8);
 
+        return view('doctor.visits.index', [
+          'visits' => $visits
+        ]);
     }
 
     /**
@@ -43,19 +43,16 @@ class VisitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-     //when on the add visit page display the visits create page
     public function create()
     {
       $visits = Visit::all();
       $patients = Patient::all();
       $doctors = Doctor::all();
-        return view('admin.visits.create', [
+        return view('doctor.visits.create', [
           'visits' => $visits,
           'patients' => $patients,
           'doctors' => $doctors
-
-      ]);
+       ]);
     }
 
     /**
@@ -64,8 +61,6 @@ class VisitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-     //when storing a new visit the fields are validated by making sure they have inputed using correct information format
     public function store(Request $request)
     {
       $request->validate([
@@ -89,7 +84,7 @@ class VisitController extends Controller
       $visit->save();
 
       //when the visit has been stored redirect back to the index page
-      return redirect()->route('admin.visits.index');
+      return redirect()->route('$doctor.visits.index');
     }
 
     /**
@@ -98,15 +93,13 @@ class VisitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    //when on the show visit page display the index show page
     public function show($id)
-      {
+    {
       //find the visit by id
       $visit = Visit::findOrFail($id);
-      return view('admin.visits.show', [
+      return view('doctor.visits.show', [
        'visit' => $visit
-      ]);
+         ]);
     }
 
     /**
@@ -115,8 +108,6 @@ class VisitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-     //when editing a visit display the visit edit page
     public function edit($id)
     {
       //find the visit by id
@@ -137,8 +128,6 @@ class VisitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-     //when updating a new visit the fields are validated by making sure they have inputed using correct information format
     public function update(Request $request, $id)
     {
       $request->validate([
@@ -160,22 +149,20 @@ class VisitController extends Controller
       $visit->save();
 
       //when the visit has been stored redirect back to the index page
-      return redirect()->route('admin.visits.index');
+      return redirect()->route('doctor.visits.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-     //when deleting a visit find by ide and redirect back to the index page
     public function destroy($id)
     {
       $visit = Visit::findOrFail($id);
       $visit->delete();
 
-      return redirect()->route('admin.visits.index');
-    }
+      return redirect()->route('doctor.visits.index');
+
+}
 }

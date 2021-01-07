@@ -1,4 +1,4 @@
-@extends('layouts.nav')
+@extends('layouts.admin.nav')
 
 @section('content')
   <div class="container">
@@ -23,15 +23,22 @@
             <form method="POST" action="{{ route('admin.visits.store') }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="form_group">
-                  {{-- creating form fields to fill in the information to be added to the database --}}
-                <label for="patient_id">Patient Name</label>
-                <input type="text" class="form-control" id="patient_id" name="patient_id" value="{{ old('patient_id') }}" />
-              </div>
+               <label for="patient">Patient</label>
+           <select name="patient_id">
+             @foreach ($patients as $patient)
+               <option value ="{{ $patient->id }}" {{ (old('patient_id') == $patient->id) ? "selected" : "" }} >{{ $patient->user->name }}</option>
+              @endforeach
+             </select>
+             </div>
               <br>
               <div class="form_group">
-                <label for="doctor_id">Doctor Name</label>
-                <input type="text" class="form-control" id="doctor_id" name="doctor_id" value="{{ old('doctor_id') }}" />
-              </div>
+               <label for="doctor">Doctor</label>
+           <select name="doctor_id">
+             @foreach ($doctors as $doctor)
+               <option value ="{{ $doctor->id }}" {{ (old('doctor_id') == $doctor->id) ? "selected" : "" }} >{{ $doctor->user->name }}</option>
+              @endforeach
+             </select>
+             </div>
               <br>
               <div class="form_group">
                 <label for="date">Date</label>
