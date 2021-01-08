@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-01-08T15:36:43+00:00
+# @Last modified time: 2021-01-08T17:23:29+00:00
 
 
 
@@ -192,9 +192,7 @@ class PatientController extends Controller
     public function destroy($id)
     {
         $patient = Patient::findOrFail($id);
-        $user = User::findOrFail($id);
         $patient->delete();
-        $user->delete();
         return redirect()->route('admin.patients.index');
     }
 }

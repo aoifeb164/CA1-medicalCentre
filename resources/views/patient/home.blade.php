@@ -14,7 +14,13 @@
                         </div>
                     @endif
                     {{-- displays this page if you are logged in as a patient --}}
-                    You are logged in as a patient
+                  </br>
+                    Hi {{Auth::user()->name}}
+                  </br>
+                  Email: {{Auth::user()->email}}
+                </br>
+                Address: {{Auth::user()->address}}
+                </div>
                 </div>
             </div>
         </div>

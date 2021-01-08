@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T17:33:41+00:00
-# @Last modified time: 2020-11-06T18:18:35+00:00
+# @Last modified time: 2021-01-08T19:56:39+00:00
 
 
 
@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Patient;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -72,15 +73,29 @@ class RegisterController extends Controller
      */
      protected function create(array $data)
      {
-         $patient = User::create([
-             'name' => $data['name'],
-             'address' => $data['address'],
-             'phone' => $data['phone'],
-             'email' => $data['email'],
-             'password' => Hash::make($data['password']),
-         ]);
+         // $user = User::create([
+         //     'name' => $data['name'];
+         //     'address' => $data['address'];
+         //     'phone' => $data['phone'];
+         //     'email' => $data['email'];
+         //     'password' => Hash::make($data['password']);
+         // ]);
+         $user = new User();
+         $user->name = $data['name'];
+         $user->address = $data['address'];
+         $user->phone = $data['phone'];
+         $user->email = $data['email'];
+         $user->password = Hash::make($data['password']);
+         $user->save();
 
-         $patient->roles()->attach(Role::where('name', 'user')->first());
-         return $patient;;
+         $user->roles()->attach(Role::where('name', 'user')->first());
+
+         $patient = new Patient();
+         $patient->insurance_company_id = 3;
+         $patient->policy_no = '123456E';
+         $patient->user_id = $user->id;
+         $patient->save();
+
+         return $user;;
      }
 }
