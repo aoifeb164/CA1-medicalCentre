@@ -35,6 +35,10 @@
                                 <td>Registration number</td>
                                 <td>{{ $doctor->registration_no}}</td>
                             </tr>
+                            <tr>
+                                <td>Start Date</td>
+                                <td>{{ $doctor->start_date }}</td>
+                            </tr>
                         </tbody>
                     </table>
 

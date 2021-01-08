@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:11:29+00:00
-# @Last modified time: 2021-01-07T19:31:53+00:00
+# @Last modified time: 2021-01-08T15:45:15+00:00
 
 
 
@@ -48,14 +48,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function doctor()
+    {
+      return $this->hasOne('App\Models\Doctor');
+    }
+
     public function patient()
     {
       return $this->hasOne('App\Models\Patient');
     }
 
-    public function doctor()
+    public function visit()
     {
-      return $this->hasOne('App\Models\Doctor');
+      return $this->hasOne('App\Models\Visit');
     }
 
     public function roles(){

@@ -1,4 +1,4 @@
-@extends('layouts.admin.nav')
+@extends('layouts.patient.nav')
 
 @section('content')
   <div class="container">
@@ -6,7 +6,7 @@
       <div class="col-md-8 col-md-offset-2">
         <div class="card">
           <div class="card-header">
-            Edit a visit
+            Add new patient appointment
           </div>
 
           <div class='card-body'>
@@ -19,48 +19,46 @@
                 </ul>
               </div>
             @endif
-            {{-- edit visit form --}}
-            <form method="POST" action="{{ route('admin.visits.update', $visit->id) }}">
+            {{-- create new visit form --}}
+            <form method="POST" action="{{ route('patient.visits.store') }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="form_group">
                <label for="patient">Patient</label>
-               <br>
            <select name="patient_id">
              @foreach ($patients as $patient)
-               <option value ="{{ $patient->id }}" {{ (old('patient_id', $patient->user->name) == $patient->user->name) ? "selected" : "" }} >{{ $patient->user->name }}</option>
+               <option value ="{{ $patient->id }}" {{ (old('patient_id') == $patient->id) ? "selected" : "" }} >{{ $patient->name }}</option>
               @endforeach
              </select>
              </div>
               <br>
               <div class="form_group">
                <label for="doctor">Doctor</label>
-               <br>
            <select name="doctor_id">
              @foreach ($doctors as $doctor)
-               <option value ="{{ $doctor->id }}" {{ (old('doctor_id', $doctor->user->name) == $doctor->user->name) ? "selected" : "" }} >{{ $doctor->user->name }}</option>
+               <option value ="{{ $doctor->id }}" {{ (old('doctor_id') == $doctor->id) ? "selected" : "" }} >{{ $doctor->name }}</option>
               @endforeach
              </select>
              </div>
               <br>
               <div class="form_group">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" id="date" name="date" value="{{ old('date', $visit->date) }}" />
+                <input type="date" class="form-control" id="date" name="date" value="{{ old('date') }}" />
               </div>
               <br>
               <div class="form_group">
                 <label for="time">Time</label>
-                <input type="time" class="form-control" id="time" name="time" value="{{ old('time', $visit->time) }}" />
+                <input type="time" class="form-control" id="time" name="time" value="{{ old('time') }}" />
               </email>
               <br>
               <div class="form_group">
                 <label for="description">Description</label>
-                <input type="text" class="form-control" id="description" name="description" value="{{ old('password', $visit->description) }}" />
+                <input type="text" class="form-control" id="description" name="description" value="{{ old('description') }}" />
               </div>
               <br>
               <div class="float-right">
                 <br>
                 {{-- creating cancel and submit button --}}
-                <a href="{{ route('admin.visits.index') }}" class="btn btn-default">Cancel</a>
+                <a href="{{ route('patient.visits.index') }}" class="btn btn-default">Cancel</a>
                 <button type="submit" class="btn btn-primary pull-right">Submit</button>
               </div>
             </form>

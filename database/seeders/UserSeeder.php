@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T16:58:54+00:00
-# @Last modified time: 2021-01-07T17:27:19+00:00
+# @Last modified time: 2021-01-08T15:13:15+00:00
 
 
 namespace Database\Seeders;
@@ -38,6 +38,7 @@ class UserSeeder extends Seeder
         $admin->password = Hash::make('secret');
         //save in user table and attaching admin role
         $admin->save();
+
         $admin->roles()->attach($role_admin);
         $user = new User();
         $user->name = 'Aoife Brennan';
@@ -50,6 +51,7 @@ class UserSeeder extends Seeder
 
         $doctor = new Doctor();
         $doctor ->registration_no = '1234fgh8';
+        $doctor->start_date = '2000-01-01';
         $doctor->user_id = $user->id;
         $doctor->save();
 
@@ -61,12 +63,12 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('secret');
         $user->save();
         $user->roles()->attach($role_patient);
-        //
-        // $patient = new Patient();
-        // $patient->insurance_company_id = 3;
-        // $patient->policy_no = '123456E';
-        // $patient->user_id = $user->id;
-        // $patient->save();
+
+        $patient = new Patient();
+        $patient->insurance_company_id = 3;
+        $patient->policy_no = '123456E';
+        $patient->user_id = $user->id;
+        $patient->save();
 
 
             // filling the databse with x amount of doctors, patients and admins

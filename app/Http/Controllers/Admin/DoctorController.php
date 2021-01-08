@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-01-02T15:04:28+00:00
+# @Last modified time: 2021-01-08T15:55:57+00:00
 
 
 
@@ -21,6 +21,8 @@ class DoctorController extends Controller
        *
        * @return void
        */
+
+
       public function __construct()
       {
           $this->middleware('auth');
@@ -32,12 +34,12 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when on the index page display the doctors index
+     //when requesting the index page display the doctors index and get all the doctors
       public function index()
       {
-  $doctors = Doctor::all();
-  return view('admin.doctors.index', [
-    'doctors' => $doctors
+       $doctors = Doctor::all();
+       return view('admin.doctors.index', [
+       'doctors' => $doctors
   ]);
     }
 
@@ -47,12 +49,12 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when on the add doctor page display the doctors create form page
+     //when requesting the create page display the doctors create form page and get all the users
     public function create()
     {
-      $users = User::all();
+      $doctors = Doctor::all();
         return view('admin.doctors.create', [
-          'users'=> $users
+          'doctors' => $doctors
       ]);
     }
 
@@ -72,7 +74,8 @@ class DoctorController extends Controller
         'phone' => 'required|min:10',
         'email' => 'required|max:191',
 
-        'registration_no'=> 'required|max:10|unique:doctors,registration_no'
+        'registration_no'=> 'required|max:10|unique:doctors,registration_no',
+        'start_date'=>'required|date_format:Y-m-d'
 
         //saves as a new user and stores the following information in the user table
       ]);
@@ -87,6 +90,7 @@ class DoctorController extends Controller
       //saves as a new doctor and stores the following in the doctors table
       $doctor = new Doctor();
       $doctor->registration_no = $request->input('registration_no');
+      $doctor->start_date = $request->input('date');
       $doctor->user_id = $user->id;
       $doctor->save();
 
@@ -145,7 +149,8 @@ class DoctorController extends Controller
           'phone' => 'required|min:10|unique:doctors,phone,' . $doctor->id,
           'email' => 'required|max:191',
 
-          'registration_no'=> 'required|max:10|unique:doctors,registration_no'
+          'registration_no'=> 'required|max:10|unique:doctors,registration_no',
+          'start_date'=>'required|date_format:Y-m-d'
 
         ]);
 
@@ -161,6 +166,7 @@ class DoctorController extends Controller
         //saves as a doctor and stores the following in the doctors table
         $doctor = new Doctor();
         $doctor->registration_no = $request->input('registration_no');
+        $doctor->start_date = $request->input('date');
         $doctor->user_id = $user->id;
         $doctor->save();
 

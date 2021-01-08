@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:11:29+00:00
-# @Last modified time: 2021-01-02T13:03:01+00:00
+# @Last modified time: 2021-01-08T15:19:10+00:00
 
 
 
@@ -26,6 +26,6 @@ class DatabaseSeeder extends Seeder
        $this->call(UserSeeder::class);
        $this->call(PatientSeeder::class);
        $this->call(DoctorSeeder::class);
-       $this->call(VisitSeeder::class);
+      // $this->call(VisitSeeder::class);
      }
 }

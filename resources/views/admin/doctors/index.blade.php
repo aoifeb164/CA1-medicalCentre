@@ -27,6 +27,7 @@
                 <th>Phone</th>
                 <th>Email</th>
                 <th>Registration number</th>
+                <th>Start Date</th>
             </thead>
 
             <tbody>
@@ -38,6 +39,7 @@
               <td>{{ $doctor->user->phone }}</td>
               <td>{{ $doctor->user->email }}</td>
               <td>{{ $doctor->registration_no }}</td>
+              <td>{{ $doctor->start_date }}</td>
               <td>
                 {{-- creating a view, edit and delete button --}}
                 <a href="{{ route('admin.doctors.show', $doctor->id) }}" class="btn btn-primary">View</a>

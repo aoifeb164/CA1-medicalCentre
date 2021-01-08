@@ -52,6 +52,11 @@
                 <label for="registration_no">Registration number</label>
                 <input type="text" class="form-control" id="registration_no" name="registration_no" value="{{ old('registration_no') }}" />
               </div>
+              <br>
+              <div class="form_group">
+                <label for="date">Start Date</label>
+                <input type="date" class="form-control" id="start_date" name="start_date" value="{{ old('start_date') }}" />
+              </div>
               <div class="float-right">
                 <br>
                 {{-- creating cancel and submit button --}}

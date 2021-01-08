@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-29T13:52:20+00:00
-# @Last modified time: 2021-01-02T15:19:40+00:00
+# @Last modified time: 2021-01-08T15:22:38+00:00
 
 
 
@@ -29,7 +29,8 @@ class DoctorFactory extends Factory
       //declaring what information we want to be put into the database
       //insert a unique random number in the registration number in the doctor table when the db is seeded
         return [
-              'registration_no' => $this->faker->unique()->randomNumber
+              'registration_no' => $this->faker->unique()->randomNumber,
+              'start_date' => $this->faker->date('Y-m-d', '2000-01-01', '2021-01-01')
         ];
     }
 }

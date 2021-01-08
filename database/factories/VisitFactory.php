@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-29T14:35:14+00:00
-# @Last modified time: 2021-01-02T15:22:53+00:00
+# @Last modified time: 2021-01-08T13:16:24+00:00
 
 
 
@@ -9,6 +9,7 @@ namespace Database\Factories;
 //calling the user, patient and visit models
 use App\Models\User;
 use App\Models\Patient;
+use App\Models\Doctor;
 use App\Models\Visit;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -35,8 +36,8 @@ class VisitFactory extends Factory
           'time' => $this->faker->time,
           'description' => $this->faker->sentence(10),
           //calling the patient and doctor factories to display one of the created patient and doctor ids in the visits table
-          'patient_id' => User::factory(),
-          'doctor_id' => User::factory()
+          'patient_id' => Patient::factory(),
+          'doctor_id' => Doctor::factory()
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-17T19:52:49+00:00
-# @Last modified time: 2021-01-03T18:58:52+00:00
+# @Last modified time: 2021-01-08T15:13:06+00:00
 
 
 
@@ -29,6 +29,7 @@ class CreateDoctorsTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('registration_no');
+            $table->date('start_date');
             $table->timestamps();
         });
     }
@@ -39,7 +40,7 @@ class CreateDoctorsTable extends Migration
      * @return void
      */
 
-     //dropping the table if the migration is rolled back 
+     //dropping the table if the migration is rolled back
     public function down()
     {
         Schema::dropIfExists('doctors');
