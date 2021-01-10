@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-01-10T22:13:17+00:00
+# @Last modified time: 2021-01-10T23:00:31+00:00
 
 
 
@@ -173,6 +173,7 @@ class DoctorController extends Controller
         $doctor = Doctor::findOrFail($id);
         $doctor->registration_no = $request->input('registration_no');
         $doctor->start_date = $request->input('start_date');
+        $doctor->user_id = $user->id;
         $doctor->save();
 
         //message to appear when a doctor has been edited
