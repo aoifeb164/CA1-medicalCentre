@@ -23,7 +23,7 @@
             <form method="POST" action="{{ route('admin.patients.update', $patient->id) }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="form_group">
-
+                {{-- creating form fields to fill in the information to be added to the database --}}
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $patient->user->name) }}" />
               </div>

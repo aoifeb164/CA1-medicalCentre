@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T17:41:34+00:00
-# @Last modified time: 2021-01-03T17:23:13+00:00
+# @Last modified time: 2021-01-10T12:07:24+00:00
 
 
 
@@ -33,9 +33,6 @@ class HomeController extends Controller
      //when a user with the doctor role logs in bring them to the doctor home page
     public function index()
     {
-      // $user = Auth::user();
-      //
-      // $user->authorizeRoles('doctor');
         return view('doctor.home');
     }
 }

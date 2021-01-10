@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:11:29+00:00
-# @Last modified time: 2021-01-03T18:54:51+00:00
+# @Last modified time: 2021-01-10T12:31:09+00:00
 
 
 
@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
      */
 
      //creating the users table in the database using a migration
-     //declaring the information we want to be stored
+     //declaring the information we want to be stored and their data type
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {

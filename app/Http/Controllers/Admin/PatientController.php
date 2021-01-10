@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-01-08T17:23:29+00:00
+# @Last modified time: 2021-01-10T12:03:51+00:00
 
 
 
@@ -33,7 +33,7 @@ class PatientController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-      //when on the index page display the patients index
+      //when requesting the index page display the patients index and get all the patients from the patients table
       public function index()
       {
   $patients = Patient::all();
@@ -69,7 +69,7 @@ class PatientController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when storing a new patient the fields are validated by making sure they have inputed using correct information format
+   //when storing a new patient the fields are validated by making sure they have entered data and inputed using correct information format
     public function store(Request $request)
     {
       $request->validate([
@@ -110,7 +110,7 @@ class PatientController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when on the show patient page display the patients show page
+     //when requesting the show patient page display the patients show page and get the patient by id from the patients table
     public function show($id)
     {
       //find the patient by id
@@ -127,7 +127,7 @@ class PatientController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    //when editing a patient display the patient edit page
+     //when requesting to edit a patient display the patient edit page and get the patient by id from the patients table
     public function edit($id)
     {
       //find the patient by id
@@ -147,7 +147,7 @@ class PatientController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when updating a new patient the fields are validated by making sure they have inputed using correct information format
+     //when updating a new patient the fields are validated by making sure they have inputed and they are using correct information format
     public function update(Request $request, $id)
     {
       $request->validate([
@@ -188,7 +188,7 @@ class PatientController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when deleting a patient find by id and redirect back to patient index page
+    //when deleting a patient get them by id in the patients table and redirect back to patient index page
     public function destroy($id)
     {
         $patient = Patient::findOrFail($id);

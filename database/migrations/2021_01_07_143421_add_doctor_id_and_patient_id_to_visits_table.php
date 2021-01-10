@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-01-07T14:34:21+00:00
-# @Last modified time: 2021-01-07T14:51:00+00:00
+# @Last modified time: 2021-01-10T12:47:39+00:00
 
 
 
@@ -18,18 +18,22 @@ class AddDoctorIdAndPatientIdToVisitsTable extends Migration
      */
     public function up()
     {
+
+      //adding the patiient id and doctor id to the visits table with a migrations
+      //this relates to the patients table and doctors table in the db
         Schema::table('visits', function (Blueprint $table) {
 
           $table->dropColumn('patient');
           $table->dropColumn('doctor');
 
+          //creating the patient_id and the doctor_id column in the table
           $table->unsignedBigInteger('patient_id');
           $table->unsignedBigInteger('doctor_id');
 
-          //creating foreign keys in the patients table
-          //calls the users table and the id of each patient in the users table
+          //creating foreign keys in the visits table
+          //calls the patients table and id of each patient in patients table
           $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('restrict');
-          //calls the insurance_companies table and the ids of the companies and inserting them when they relate to a patient
+          //calls the doctors table and the ids of the doctor in the doctors table
           $table->foreign('doctor_id')->references('id')->on('doctors')->onUpdate('cascade')->onDelete('restrict');
         });
     }
@@ -39,6 +43,8 @@ class AddDoctorIdAndPatientIdToVisitsTable extends Migration
      *
      * @return void
      */
+
+    //dropping the columns and reverting back when the migration is rolled back
     public function down()
     {
         Schema::table('visits', function (Blueprint $table) {

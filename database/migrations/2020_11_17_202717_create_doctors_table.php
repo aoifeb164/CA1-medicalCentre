@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-17T19:52:49+00:00
-# @Last modified time: 2021-01-08T15:13:06+00:00
+# @Last modified time: 2021-01-10T12:33:17+00:00
 
 
 
@@ -17,8 +17,8 @@ class CreateDoctorsTable extends Migration
      * @return void
      */
 
-     //creating the doctors table in the Database using a migration
-     //declaring the information we want to be stored
+     //creating the doctors table in the database using a migration
+     //declaring the information we want to be stored and their data type
     public function up()
     {
         Schema::create('doctors', function (Blueprint $table) {

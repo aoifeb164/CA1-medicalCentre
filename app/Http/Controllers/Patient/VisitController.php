@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-01-07T17:11:12+00:00
-# @Last modified time: 2021-01-08T12:21:02+00:00
+# @Last modified time: 2021-01-10T12:16:49+00:00
 
 
 
@@ -10,6 +10,7 @@ namespace App\Http\Controllers\patient;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
+//calling the visit, doctor and patient table
 use App\Models\Visit;
 use App\Models\Patient;
 use App\Models\Doctor;
@@ -28,9 +29,13 @@ class VisitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //when requesting the index page display the visits index and get all the visits from the visits table
     public function index()
     {
         $user = Auth::user();
+
+        //display only the patient who is logged in visits and order by date
         $visits = $user->patient->visits()->orderBy('date', 'asc')->paginate(8);
 
         return view('patient.visits.index', [
@@ -43,6 +48,8 @@ class VisitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //when requesting the create page display the visits create form page and get all the visits,doctors and patients from their tables
     public function create()
     {
       $visits = Visit::all();
@@ -61,6 +68,8 @@ class VisitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    //when storing a new visit the fields are validated by making sure they have entered data and inputed using correct information format
     public function store(Request $request)
     {
       $request->validate([
@@ -93,6 +102,8 @@ class VisitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //when requesting the show visit page display the visits show page and get the visit by id from the visits table
     public function show($id)
     {
       //find the visit by id
@@ -108,6 +119,8 @@ class VisitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //when editing a visit display the visit edit page
     public function edit($id)
     {
       //find the visit by id
@@ -128,6 +141,8 @@ class VisitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //when updating a new visit the fields are validated by making sure they have inputed and they are using correct information format
     public function update(Request $request, $id)
     {
       $request->validate([
@@ -157,6 +172,8 @@ class VisitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     //when deleting a visit find by ide and redirect back to the index page
     public function destroy($id)
     {
       $visit = Visit::findOrFail($id);

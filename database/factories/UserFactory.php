@@ -1,12 +1,12 @@
 <?php
 # @Date:   2020-11-06T12:11:29+00:00
-# @Last modified time: 2021-01-08T14:44:30+00:00
+# @Last modified time: 2021-01-10T12:28:35+00:00
 
 
 
 
 namespace Database\Factories;
-
+//calling the user model
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;

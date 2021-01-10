@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-29T12:54:59+00:00
-# @Last modified time: 2021-01-03T19:04:51+00:00
+# @Last modified time: 2021-01-10T12:40:00+00:00
 
 
 
@@ -17,10 +17,11 @@ class AddUserIdToDoctorsTable extends Migration
      * @return void
      */
 
-     //adding the user id to the doctors table with a migration
-     //this relates to the user table in the db
     public function up()
     {
+        //adding the user id to the doctors table with a migration
+        //this relates to the user table in the db
+        //dropping the following columns in the db and storing the info im the users table
         Schema::table('doctors', function (Blueprint $table) {
           $table->dropColumn('name');
           $table->dropColumn('address');
@@ -28,6 +29,7 @@ class AddUserIdToDoctorsTable extends Migration
           $table->dropColumn('email');
           $table->dropColumn('password');
 
+          //creating the user_id column in the table
           $table->unsignedBigInteger('user_id');
           //creating a foreign key in the doctors table
           //calls the users table and the id of each doctor in the users table
@@ -40,7 +42,8 @@ class AddUserIdToDoctorsTable extends Migration
      *
      * @return void
      */
-     //dropping the table if the migration is rolled back
+
+     //dropping the columns and reverting back if the migration is rolled back
     public function down()
     {
         Schema::table('doctors', function (Blueprint $table) {

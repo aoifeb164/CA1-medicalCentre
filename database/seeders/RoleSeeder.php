@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T16:59:09+00:00
-# @Last modified time: 2021-01-02T15:27:56+00:00
+# @Last modified time: 2021-01-10T12:51:34+00:00
 
 
 
@@ -8,6 +8,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+//calling the role model
 use App\Models\Role;
 class RoleSeeder extends Seeder
 {
@@ -17,7 +18,7 @@ class RoleSeeder extends Seeder
      * @return void
      */
 
-     //filling the database with the necessary Roles
+     //filling the database with the roles
      //adding 3 roles with a name and description and saving it in the roles table
     public function run()
     {

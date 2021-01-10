@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T17:33:41+00:00
-# @Last modified time: 2021-01-08T19:56:39+00:00
+# @Last modified time: 2021-01-10T13:53:45+00:00
 
 
 
@@ -80,6 +80,7 @@ class RegisterController extends Controller
          //     'email' => $data['email'];
          //     'password' => Hash::make($data['password']);
          // ]);
+         
          $user = new User();
          $user->name = $data['name'];
          $user->address = $data['address'];

@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-01-08T15:55:57+00:00
+# @Last modified time: 2021-01-10T12:00:25+00:00
 
 
 
@@ -34,7 +34,7 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when requesting the index page display the doctors index and get all the doctors
+     //when requesting the index page display the doctors index and get all the doctors from the doctors table
       public function index()
       {
        $doctors = Doctor::all();
@@ -49,7 +49,7 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when requesting the create page display the doctors create form page and get all the users
+     //when requesting the create page display the doctors create form page and get all the doctors from the doctors table
     public function create()
     {
       $doctors = Doctor::all();
@@ -65,7 +65,7 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when storing a new doctor the fields are validated by making sure they have inputed using correct information format
+     //when storing a new doctor the fields are validated by making sure they have entered data and inputed using correct information format
     public function store(Request $request)
     {
       $request->validate([
@@ -77,7 +77,7 @@ class DoctorController extends Controller
         'registration_no'=> 'required|max:10|unique:doctors,registration_no',
         'start_date'=>'required|date_format:Y-m-d'
 
-        //saves as a new user and stores the following information in the user table
+      //saves as a new user and stores the following information in the user table
       ]);
       $user = new User();
       $user->name = $request->input('name');
@@ -105,7 +105,7 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when on the show doctor page display the doctors show page
+     //when requesting the show doctor page display the doctors show page and get the doctor by id from the doctors table
     public function show($id)
     {
       //find the doctor by id
@@ -122,7 +122,7 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when editing a doctor display the doctor edit page
+     //when requesting to edit a doctor display the doctor edit page and get the dcotor by id from the doctors table
     public function edit($id)
     {
       //find the doctor by id
@@ -140,7 +140,7 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    //when updating a new doctor the fields are validated by making sure they have inputed using correct information format
+    //when updating a new doctor the fields are validated by making sure they have inputed and they are using correct information format
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -181,7 +181,7 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when deleting a doctor find by id and redirect back to doctor index page
+     //when deleting a doctor get them by id in the doctors table and redirect back to doctor index page
     public function destroy($id)
     {
         $doctor = Doctor::findOrFail($id);

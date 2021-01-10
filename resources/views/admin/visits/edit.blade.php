@@ -23,6 +23,7 @@
             <form method="POST" action="{{ route('admin.visits.update', $visit->id) }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="form_group">
+                {{-- creating form fields to fill in the information to be added to the database --}}
                <label for="patient">Patient</label>
                <br>
            <select name="patient_id">

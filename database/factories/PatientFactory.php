@@ -1,12 +1,12 @@
 <?php
 # @Date:   2020-12-29T13:51:12+00:00
-# @Last modified time: 2021-01-02T15:19:51+00:00
+# @Last modified time: 2021-01-10T12:25:05+00:00
 
 
 
 
 namespace Database\Factories;
-
+//calling the patient and insurance company model
 use App\Models\Patient;
 use App\Models\InsuranceCompany;
 use Illuminate\Database\Eloquent\Factories\Factory;

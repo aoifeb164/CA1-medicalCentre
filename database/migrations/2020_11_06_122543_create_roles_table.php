@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:25:44+00:00
-# @Last modified time: 2021-01-03T18:55:53+00:00
+# @Last modified time: 2021-01-10T12:31:37+00:00
 
 
 
@@ -17,8 +17,8 @@ class CreateRolesTable extends Migration
      * @return void
      */
 
-     //creating the roles table in the Database using a migration
-     //declaring the information we want to be stored
+     //creating the roles table in the database using a migration
+     //declaring the information we want to be stored and their data type
     public function up()
     {
         Schema::create('roles', function (Blueprint $table) {

@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:11:30+00:00
-# @Last modified time: 2021-01-08T11:56:13+00:00
+# @Last modified time: 2021-01-10T13:50:17+00:00
 
 
 
@@ -44,9 +44,6 @@ Route::get('/doctor/home', [App\Http\Controllers\Doctor\HomeController::class, '
 //display the patient home page when the patient logs in with a patient role
 Route::get('/patient/home', [App\Http\Controllers\Patient\HomeController::class, 'index'])->name('patient.home');
 
-// Route::get('/doctor/patients/', [UserBookController::class, 'index'])->name('user.patients.index');
-// Route::get('/user/patients/{id}', [UserBookController::class, 'show'])->name('user.patients.show');
-
 //display the admin doctor index when logged in as an admin and viewing list of doctors
 Route::get('/admin/doctors', [AdminDoctorController::class, 'index'])->name('admin.doctors.index');
 //display the admin create doctor form when logged in as admin and wanting to create new doctor
@@ -83,7 +80,7 @@ Route::get('/admin/visits', [AdminVisitController::class, 'index'])->name('admin
 Route::get('/admin/visits/create', [AdminVisitController::class, 'create'])->name('admin.visits.create');
 //display the admin show visit page when logged in as admin and viewing one visit and getting them from the db by id
 Route::get('/admin/visits/{id}', [AdminVisitController::class, 'show'])->name('admin.visits.show');
-//storing visitt in the db in the visit table
+//storing visit in the db in the visit table
 Route::post('/admin/visits/store', [AdminVisitController::class, 'store'])->name('admin.visits.store');
 //displaying the admin edit visit form when logged in as an admin and wanting to change visit details and getting them from the db by id
 Route::get('/admin/visits/{id}/edit', [AdminVisitController::class, 'edit'])->name('admin.visits.edit');
@@ -92,30 +89,30 @@ Route::put('/admin/visits{id}', [AdminVisitController::class, 'update'])->name('
 //deleting a visit from the table and getting them by id
 Route::delete('/admin/visits/{id}', [AdminVisitController::class, 'destroy'])->name('admin.visits.destroy');
 
-//display the admin visit index when logged in as an admin and viewing list of visits
+//display the doctor visit index when logged in as an doctor and viewing list of visits
 Route::get('/doctor/visits', [DoctorVisitController::class, 'index'])->name('doctor.visits.index');
-//display the admin create visit form when logged in as admin and wanting to create new visit
+//display the doctor create visit form when logged in as doctor and wanting to create new visit
 Route::get('/doctor/visits/create', [DoctorVisitController::class, 'create'])->name('doctor.visits.create');
-//display the admin show visit page when logged in as admin and viewing one visit and getting them from the db by id
+//display the doctor show visit page when logged in as doctor and viewing one visit and getting them from the db by id
 Route::get('/doctor/visits/{id}', [DoctorVisitController::class, 'show'])->name('doctor.visits.show');
-//storing visitt in the db in the visit table
+//storing visit in the db in the visit table
 Route::post('/doctor/visits/store', [DoctorVisitController::class, 'store'])->name('doctor.visits.store');
-//displaying the admin edit visit form when logged in as an admin and wanting to change visit details and getting them from the db by id
+//displaying the doctor edit visit form when logged in as an doctor and wanting to change visit details and getting them from the db by id
 Route::get('/doctor/visits/{id}/edit', [DoctorVisitController::class, 'edit'])->name('doctor.visits.edit');
 //updating the visit table in the db
 Route::put('/doctor/visits{id}', [DoctorVisitController::class, 'update'])->name('doctor.visits.update');
 //deleting a visit from the table and getting them by id
 Route::delete('/doctor/visits/{id}', [DoctorVisitController::class, 'destroy'])->name('doctor.visits.destroy');
 
-//display the admin visit index when logged in as an admin and viewing list of visits
+//display the patient visit index when logged in as an patient and viewing list of visits
 Route::get('/patient/visits', [PatientVisitController::class, 'index'])->name('patient.visits.index');
-//display the admin create visit form when logged in as admin and wanting to create new visit
+//display the patient create visit form when logged in as admin and wanting to create new visit
 Route::get('/patient/visits/create', [PatientVisitController::class, 'create'])->name('patient.visits.create');
-//display the admin show visit page when logged in as admin and viewing one visit and getting them from the db by id
+//display the patient show visit page when logged in as patient and viewing one visit and getting them from the db by id
 Route::get('/patient/visits/{id}', [PatientVisitController::class, 'show'])->name('patient.visits.show');
-//storing visitt in the db in the visit table
+//storing visit in the db in the visit table
 Route::post('/patient/visits/store', [PatientVisitController::class, 'store'])->name('patient.visits.store');
-//displaying the admin edit visit form when logged in as an admin and wanting to change visit details and getting them from the db by id
+//displaying the patient edit visit form when logged in as an patient and wanting to change visit details and getting them from the db by id
 Route::get('/patient/visits/{id}/edit', [PatientVisitController::class, 'edit'])->name('patient.visits.edit');
 //updating the visit table in the db
 Route::put('/patient/visits{id}', [PatientVisitController::class, 'update'])->name('patient.visits.update');

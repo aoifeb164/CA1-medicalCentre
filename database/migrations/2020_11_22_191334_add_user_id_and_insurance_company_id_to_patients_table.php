@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-22T19:13:33+00:00
-# @Last modified time: 2021-01-07T14:41:14+00:00
+# @Last modified time: 2021-01-10T12:41:05+00:00
 
 
 
@@ -20,6 +20,7 @@ class AddUserIdAndInsuranceCompanyIdToPatientsTable extends Migration
     {
       //adding the user id and insurance company id to the patients table with a migrations
       //this relates to the user table and insurance_companies table in the db
+      //dropping the following columns in the db and storing the info im the users table
         Schema::table('patients', function (Blueprint $table) {
             $table->dropColumn('name');
             $table->dropColumn('address');
@@ -28,6 +29,7 @@ class AddUserIdAndInsuranceCompanyIdToPatientsTable extends Migration
             $table->dropColumn('password');
             $table->dropColumn('insurance_company');
 
+            //creating the user_id and the insurance_company_id column in the table
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('insurance_company_id');
 
@@ -47,7 +49,7 @@ class AddUserIdAndInsuranceCompanyIdToPatientsTable extends Migration
      * @return void
      */
 
-     //dropping the table when the migration is rolled back
+     //dropping the columns and reverting back when the migration is rolled back
     public function down()
     {
         Schema::table('patients', function (Blueprint $table) {

@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:28:48+00:00
-# @Last modified time: 2021-01-03T18:57:44+00:00
+# @Last modified time: 2021-01-10T12:32:37+00:00
 
 
 
@@ -17,8 +17,8 @@ class CreateUserRoleTable extends Migration
      * @return void
      */
 
-     //creating the user_role table in the Database using a migration
-     //declaring the information we want to be stored
+     //creating the user_role table in the database using a migration
+     //declaring the information we want to be stored and their data type
      //this relates to the roles table and the users table
 
     public function up()

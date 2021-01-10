@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-22T16:13:07+00:00
-# @Last modified time: 2021-01-08T13:22:46+00:00
+# @Last modified time: 2021-01-10T12:42:24+00:00
 
 
 
@@ -17,8 +17,8 @@ class CreateVisitsTable extends Migration
      * @return void
      */
 
-     //creating the visits table in the Database with a migration
-     //declaring the information we want to be stored
+     //creating the visits table in the database with a migration
+     //declaring the information we want to be stored and their data type
      public function up()
      {
          Schema::create('visits', function (Blueprint $table) {
@@ -39,7 +39,7 @@ class CreateVisitsTable extends Migration
      * @return void
      */
 
-     //dropping the table if the migration is rolled back
+    //dropping the table if the migration is rolled back
     public function down()
     {
         Schema::dropIfExists('visits');

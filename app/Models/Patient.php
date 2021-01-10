@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-17T19:52:49+00:00
-# @Last modified time: 2021-01-07T16:41:04+00:00
+# @Last modified time: 2021-01-10T12:19:36+00:00
 
 
 
@@ -15,6 +15,7 @@ class Patient extends Model
     use HasFactory;
 
     //delcaring the relationship between patients and users tables
+    //the patient role belongs to a suer
     public function user()
     {
     return $this->belongsTo('App\Models\User');
@@ -25,7 +26,8 @@ class Patient extends Model
     {
     return $this->belongsTo('App\Models\InsuranceCompany');
   }
-
+  //declaring the relationship between the patient and visits table
+  //a patient has many visits
   public function visits()
   {
   return $this->hasMany('App\Models\Visit', 'patient_id');
