@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T16:58:54+00:00
-# @Last modified time: 2021-01-10T22:18:32+00:00
+# @Last modified time: 2021-01-10T22:48:12+00:00
 
 
 namespace Database\Seeders;
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
         $admin->name = 'Aoife Brennan';
         $admin->address = '198 street, Carlow';
         $admin->phone = '0987634567';
-        $admin->email = 'aoifee@email.com';
+        $admin->email = 'aoife@email.com';
         $admin->password = Hash::make('secret');
         //save in user table and attaching admin role
         $admin->save();
