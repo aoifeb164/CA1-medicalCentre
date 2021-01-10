@@ -1,4 +1,4 @@
-@extends('layouts.admin.nav')
+@extends('layouts.admin.app')
 
 @section('content')
   <div class="container">
@@ -22,6 +22,7 @@
                 {{-- edit patient form --}}
             <form method="POST" action="{{ route('admin.patients.update', $patient->id) }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                  <input type="hidden" name="_method" value="Put">
               <div class="form_group">
                 {{-- creating form fields to fill in the information to be added to the database --}}
                 <label for="name">Name</label>
@@ -62,7 +63,7 @@
                 <br>
                   {{-- creating cancel and submit button --}}
                 <a href="{{ route('admin.patients.index') }}" class="btn btn-default">Cancel</a>
-                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                <button type="submit" class="btn btn-primary pull-right">Submit</a>
               </div>
             </form>
           </div>

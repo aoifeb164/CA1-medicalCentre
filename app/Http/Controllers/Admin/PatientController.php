@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-01-10T12:03:51+00:00
+# @Last modified time: 2021-01-10T20:17:54+00:00
 
 
 
@@ -99,6 +99,9 @@ class PatientController extends Controller
       $patient->user_id = $user->id;
       $patient->save();
 
+      //flash message to appear when a patient has been added (does not work)
+      $request->session()->flash('succcess', 'Pateint added successfully!');
+
       //when the patient has been stored redirect back to the index page
       return redirect()->route('admin.patients.index');
     }
@@ -157,25 +160,26 @@ class PatientController extends Controller
         'email' => 'required|max:191',
 
         'insurance_company_id' => 'required',
-        'policy_no' => 'required|max:191|unique:patients,policy_no'
+        'policy_no' => 'required|max:191'
 
       ]);
 
       //saves as a new user and stores the following information in the user table
-      $user = new User();
+      $user = User::findOrFail($id);
       $user->name = $request->input('name');
       $user->address = $request->input('address');
       $user->phone = $request->input('phone');
       $user->email = $request->input('email');
-      $user->password = $request->input('password');
       $user->save();
 
       //saves as a new patient and stores the following in the patients table
-      $patient = new Patient();
+      $patient = Patient::findOrFail($id);
       $patient->insurance_company_id = $request->input('insurance_company_id');
       $patient->policy_no = $request->input('policy_no');
-      $patient->user_id = $user->id;
       $patient->save();
+
+      //message to appear when a doctor has been edited
+      $request->session()->flash('info', 'Pateint edited successfully!');
 
       //when the patient has been stored redirect back to the index page
       return redirect()->route('admin.patients.index');
@@ -189,10 +193,13 @@ class PatientController extends Controller
      */
 
     //when deleting a patient get them by id in the patients table and redirect back to patient index page
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $patient = Patient::findOrFail($id);
         $patient->delete();
+
+        //message to appear when a doctor has been deleted
+        $request->session()->flash('danger', 'Patient deleted successfully!');
         return redirect()->route('admin.patients.index');
     }
 }

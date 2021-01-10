@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-01-10T12:00:25+00:00
+# @Last modified time: 2021-01-10T20:15:02+00:00
 
 
 
@@ -52,9 +52,9 @@ class DoctorController extends Controller
      //when requesting the create page display the doctors create form page and get all the doctors from the doctors table
     public function create()
     {
-      $doctors = Doctor::all();
+      $users = User::all();
         return view('admin.doctors.create', [
-          'doctors' => $doctors
+          'users' => $users,
       ]);
     }
 
@@ -72,9 +72,9 @@ class DoctorController extends Controller
         'name' => 'required|max:191',
         'address' => 'required|max:191',
         'phone' => 'required|min:10',
-        'email' => 'required|max:191',
+        'email' => 'required|max:191|unique:users,email',
 
-        'registration_no'=> 'required|max:10|unique:doctors,registration_no',
+        'registration_no'=> 'required|max:10',
         'start_date'=>'required|date_format:Y-m-d'
 
       //saves as a new user and stores the following information in the user table
@@ -90,9 +90,12 @@ class DoctorController extends Controller
       //saves as a new doctor and stores the following in the doctors table
       $doctor = new Doctor();
       $doctor->registration_no = $request->input('registration_no');
-      $doctor->start_date = $request->input('date');
+      $doctor->start_date = $request->input('start_date');
       $doctor->user_id = $user->id;
       $doctor->save();
+
+      //flash message to appear when a doctor has been added (does not work)
+      $request->session()->flash('succcess', 'Doctor added successfully!');
 
       //when the doctor has been store redirect back to the index page
       return redirect()->route('admin.doctors.index');
@@ -127,8 +130,10 @@ class DoctorController extends Controller
     {
       //find the doctor by id
       $doctor = Doctor::findOrFail($id);
+      $users = User::all();
       return view('admin.doctors.edit', [
-        'doctor' => $doctor
+        'doctor' => $doctor,
+        'users' =>$users
       ]);
     }
 
@@ -143,19 +148,20 @@ class DoctorController extends Controller
     //when updating a new doctor the fields are validated by making sure they have inputed and they are using correct information format
     public function update(Request $request, $id)
     {
+        // $doctor = Doctor::findOrFail($id);
         $request->validate([
           'name' => 'required|max:191',
           'address' => 'required|max:191',
-          'phone' => 'required|min:10|unique:doctors,phone,' . $doctor->id,
+          'phone' => 'required|min:10',
           'email' => 'required|max:191',
 
-          'registration_no'=> 'required|max:10|unique:doctors,registration_no',
+          'registration_no'=> 'required|max:10',
           'start_date'=>'required|date_format:Y-m-d'
 
         ]);
 
         //saves as a user and stores the following information in the user table
-        $user = new User();
+        $user = User::findOrFail($id);
         $user->name = $request->input('name');
         $user->address = $request->input('address');
         $user->phone = $request->input('phone');
@@ -164,11 +170,14 @@ class DoctorController extends Controller
         $user->save();
 
         //saves as a doctor and stores the following in the doctors table
-        $doctor = new Doctor();
+        $doctor = Doctor::findOrFail($id);
         $doctor->registration_no = $request->input('registration_no');
-        $doctor->start_date = $request->input('date');
-        $doctor->user_id = $user->id;
+        $doctor->start_date = $request->input('start_date');
         $doctor->save();
+
+        //message to appear when a doctor has been edited
+        $request->session()->flash('info', 'Doctor edited successfully!');
+
 
         //when the doctor has been stored redirect back to the index page
         return redirect()->route('admin.doctors.index');
@@ -182,10 +191,14 @@ class DoctorController extends Controller
      */
 
      //when deleting a doctor get them by id in the doctors table and redirect back to doctor index page
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $doctor = Doctor::findOrFail($id);
         $doctor->delete();
+
+        //message to appear when a doctor has been deleted
+        $request->session()->flash('danger', 'Doctor deleted successfully!');
+
         return redirect()->route('admin.doctors.index');
     }
 }

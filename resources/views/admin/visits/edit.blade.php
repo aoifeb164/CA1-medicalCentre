@@ -1,4 +1,4 @@
-@extends('layouts.admin.nav')
+@extends('layouts.admin.app')
 
 @section('content')
   <div class="container">
@@ -22,6 +22,7 @@
             {{-- edit visit form --}}
             <form method="POST" action="{{ route('admin.visits.update', $visit->id) }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <input type="hidden" name="_method" value="Put">
               <div class="form_group">
                 {{-- creating form fields to fill in the information to be added to the database --}}
                <label for="patient">Patient</label>

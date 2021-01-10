@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T12:11:29+00:00
-# @Last modified time: 2021-01-10T12:28:35+00:00
+# @Last modified time: 2021-01-10T18:47:00+00:00
 
 
 
@@ -33,7 +33,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name,
             'address' => $this->faker->address,
             'phone' => $this->faker->phoneNumber,
-            'email' => $this->faker->unique()->safeEmail,
+            'email' => $this->faker->safeEmail,
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
