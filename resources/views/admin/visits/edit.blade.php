@@ -52,7 +52,6 @@
               <div class="form_group">
                 <label for="time">Time</label>
                 <input type="time" class="form-control" id="time" name="time" value="{{ old('time', $visit->time) }}" />
-              </email>
               <br>
               <div class="form_group">
                 <label for="description">Description</label>

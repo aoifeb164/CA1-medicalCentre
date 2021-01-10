@@ -1,12 +1,12 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-01-10T20:15:02+00:00
+# @Last modified time: 2021-01-10T22:13:17+00:00
 
 
 
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 //calling the user and doctor model
@@ -84,7 +84,7 @@ class DoctorController extends Controller
       $user->address = $request->input('address');
       $user->phone = $request->input('phone');
       $user->email = $request->input('email');
-      $user->password = $request->input('password');
+      $user->password = Hash::make('secret');
       $user->save();
 
       //saves as a new doctor and stores the following in the doctors table
@@ -166,7 +166,7 @@ class DoctorController extends Controller
         $user->address = $request->input('address');
         $user->phone = $request->input('phone');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = Hash::make('secret');
         $user->save();
 
         //saves as a doctor and stores the following in the doctors table

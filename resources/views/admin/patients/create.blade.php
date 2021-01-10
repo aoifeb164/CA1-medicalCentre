@@ -41,12 +41,7 @@
                         <div class="form_group">
                             <label for="email">Email</label>
                             <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" />
-                            </email>
-                            <br>
-                            <div class="form_group">
-                                <label for="password">Password</label>
-                                <input type="text" class="form-control" id="password" name="password" value="{{ old('password') }}" />
-                            </div>
+                          </div>
                             <br>
                             <div class="form_group">
                                 <label for="policy_no">Policy No.</label>

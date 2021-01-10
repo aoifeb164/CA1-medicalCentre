@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-01-07T17:11:12+00:00
-# @Last modified time: 2021-01-10T12:17:01+00:00
+# @Last modified time: 2021-01-10T22:04:37+00:00
 
 
 
@@ -93,7 +93,7 @@ class VisitController extends Controller
       $visit->save();
 
       //when the visit has been stored redirect back to the index page
-      return redirect()->route('$doctor.visits.index');
+      return redirect()->route('doctor.visits.index');
     }
 
     /**
@@ -127,7 +127,7 @@ class VisitController extends Controller
       $visit = Visit::findOrFail($id);
       $patients = Patient::all();
       $doctors = Doctor::all();
-      return view('admin.visits.edit', [
+      return view('doctor.visits.edit', [
         'visit' => $visit,
         'patients' => $patients,
         'doctors' => $doctors

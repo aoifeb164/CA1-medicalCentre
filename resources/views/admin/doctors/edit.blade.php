@@ -45,11 +45,6 @@
               </email>
               <br>
               <div class="form_group">
-                <label for="password">Password</label>
-                <input type="text" class="form-control" id="password" name="password" value="{{ old('password', $doctor->user->password) }}" />
-              </div>
-              <br>
-              <div class="form_group">
                 <label for="registration_no">Registration number</label>
                 <input type="text" class="form-control" id="registration_no" name="registration_no" value="{{ old('registration_no', $doctor->registration_no) }}" />
               </div>
