@@ -59,3 +59,28 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+##Installation Instructions
+Edit your 'Homestead.yaml' and add the following:
+- map: aoifemedical.centre
+  to: /home/vagrant/WAF/MyLaravelProjects/AoifeMedicalcentre/public
+  Also create the database in the 'Homestead.yaml':
+- aoife_medicalcentre
+Next duplicate the '.env.example' and name it .'env'
+Open .env and set the DB_DATABASE to the db you created in the Homestead file and set the username and password to the correct credentials
+Then run vagrant reload --provision to refresh the Homestead environment. Add AoifeMedicalcentreto your hosts file
+In the Homestead environment, cd into the application folder and run the following:
+ composer install
+ npm install
+ php artisan key:generate
+ php artisan passport:install
+
+ Then migrate and seed the database:
+ php artisan migrate --seed
+
+ And then initialise,add, and comment to Git:
+ git init
+ git add .
+ git commit -am "Initial Commit"
+
+Set your own remote repo and push your commits

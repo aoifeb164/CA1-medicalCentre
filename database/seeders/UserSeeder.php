@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T16:58:54+00:00
-# @Last modified time: 2021-01-10T13:04:01+00:00
+# @Last modified time: 2021-01-10T22:18:32+00:00
 
 
 namespace Database\Seeders;
@@ -32,10 +32,10 @@ class UserSeeder extends Seeder
 
         //creating a user
         $admin = new User();
-        $admin->name = 'Stephanie McDonnell';
+        $admin->name = 'Aoife Brennan';
         $admin->address = '198 street, Carlow';
         $admin->phone = '0987634567';
-        $admin->email = 'stephanie@email.com';
+        $admin->email = 'aoifee@email.com';
         $admin->password = Hash::make('secret');
         //save in user table and attaching admin role
         $admin->save();
@@ -43,10 +43,10 @@ class UserSeeder extends Seeder
 
         //creating a user
         $user = new User();
-        $user->name = 'Aoife Brennan';
+        $user->name = 'Stephanie McDonnell';
         $user->address = '123 street, Louth';
         $user->phone = '0860024694';
-        $user->email = 'aoife@email.com';
+        $user->email = 'stephanie@email.com';
         $user->password = Hash::make('secret');
         //save in the user table and attaching a doctor role
         $user->save();

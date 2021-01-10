@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-01-10T22:14:11+00:00
+# @Last modified time: 2021-01-10T22:45:26+00:00
 
 
 
@@ -36,10 +36,10 @@ class PatientController extends Controller
       //when requesting the index page display the patients index and get all the patients from the patients table
       public function index()
       {
-  $patients = Patient::all();
-  return view('admin.patients.index', [
-    'patients' => $patients
-  ]);
+      $patients = Patient::all();
+      return view('admin.patients.index', [
+     'patients' => $patients
+      ]);
 
     }
 
@@ -57,7 +57,7 @@ class PatientController extends Controller
       //get all insurance compaies
       $insurance_companies = InsuranceCompany::all();
         return view('admin.patients.create', [
-          'users'=> $users,
+        'users'=> $users,
         'insurance_companies' => $insurance_companies
       ]);
     }
@@ -89,7 +89,7 @@ class PatientController extends Controller
       $user->address = $request->input('address');
       $user->phone = $request->input('phone');
       $user->email = $request->input('email');
-        $user->password = Hash::make('secret');
+      $user->password = Hash::make('secret');
       $user->save();
 
       //saves as a new patient and stores the following in the patients table
